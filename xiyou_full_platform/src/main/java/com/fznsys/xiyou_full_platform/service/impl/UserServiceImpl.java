@@ -1,6 +1,5 @@
 package com.fznsys.xiyou_full_platform.service.impl;
 
-
 import com.fznsys.xiyou_full_platform.dao.UserMapper;
 import com.fznsys.xiyou_full_platform.pojo.User;
 import com.fznsys.xiyou_full_platform.service.UserService;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 @CacheConfig(cacheNames = "user", cacheManager = "cacheManager")
 @Service
 public class UserServiceImpl implements UserService {
-    //依赖注入
+    // 依赖注入
     @Autowired
     UserMapper userMapper;
 
@@ -25,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.findByUsername(username);
     }
+
     @Override
 
     @Cacheable()
@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.findAll();
     }
 
-
     @Override
     @CachePut(key = "#user.id")
 
@@ -51,26 +50,24 @@ public class UserServiceImpl implements UserService {
 
         return userArrayList;
 
-
     }
+
     @Override
     @CacheEvict(key = "#id")
     public String delete(Integer id) {
-        User user =new User();
+        User user = new User();
         user.setId(id);
         String msg = userMapper.delete(user);
 
         return "成功";
 
-
     }
+
     @Override
     public String insert(User user) {
         userMapper.insert(user);
 
-
         return "成功";
-
 
     }
 }

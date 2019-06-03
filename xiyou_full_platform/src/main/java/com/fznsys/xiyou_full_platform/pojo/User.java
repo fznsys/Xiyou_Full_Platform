@@ -1,7 +1,5 @@
 package com.fznsys.xiyou_full_platform.pojo;
 
-
-
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,6 +17,5 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String role;
-
 
 }
