@@ -1,10 +1,9 @@
-package com.example.ssmspringboot.domain;
+package com.fznsys.xiyou_full_platform.domain;
 
 
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.io.Serializable;
 

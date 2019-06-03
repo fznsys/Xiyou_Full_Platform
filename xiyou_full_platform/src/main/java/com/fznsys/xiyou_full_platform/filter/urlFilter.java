@@ -1,4 +1,4 @@
-package com.example.ssmspringboot.filter;
+package com.fznsys.xiyou_full_platform.filter;
 
 import org.apache.catalina.core.ApplicationFilterChain;
 import org.slf4j.Logger;

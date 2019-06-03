@@ -1,13 +1,11 @@
-package com.example.ssmspringboot.dao;
+package com.fznsys.xiyou_full_platform.dao;
 
 
-
-import com.example.ssmspringboot.domain.User;
+import com.fznsys.xiyou_full_platform.domain.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Mapper
 @Repository("userMapper")
