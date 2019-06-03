@@ -1,8 +1,8 @@
 package com.fznsys.xiyou_full_platform.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fznsys.xiyou_full_platform.domain.User;
-import com.fznsys.xiyou_full_platform.service.UserService;
+import com.fznsys.xiyou_full_platform.pojo.User;
+import com.fznsys.xiyou_full_platform.DAO.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +23,14 @@ public class UserController {
     @ResponseBody
     public User login(User user) {
         // 调用dao层
-
-        System.out.println("前端" + user);
-        User u = userService.getUser(user.getUsername());
-        System.out.println("数据库" + u);
-        if (u.getPassword().equals(user.getPassword())) {
-            return u;
-        }
-        return null;
+        return userService.LoginByUsernameAndPassword(user.getUsername(),user.getPassword());
+//        System.out.println("前端" + user);
+//        User u = userService.getUser(user.getUsername());
+//        System.out.println("数据库" + u);
+//        if (u.getPassword().equals(user.getPassword())) {
+//            return u;
+//        }
+//        return null;
     }
 
     @RequestMapping(value = "/getUser")

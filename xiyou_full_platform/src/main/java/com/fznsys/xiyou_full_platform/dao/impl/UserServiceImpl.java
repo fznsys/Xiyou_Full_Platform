@@ -1,8 +1,9 @@
-package com.fznsys.xiyou_full_platform.service.impl;
+package com.fznsys.xiyou_full_platform.DAO.impl;
 
-import com.fznsys.xiyou_full_platform.dao.UserMapper;
+import com.fznsys.xiyou_full_platform.DAO.Mapper.UserMapper;
 import com.fznsys.xiyou_full_platform.pojo.User;
-import com.fznsys.xiyou_full_platform.service.UserService;
+import com.fznsys.xiyou_full_platform.DAO.Service.UserService;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -69,5 +70,10 @@ public class UserServiceImpl implements UserService {
 
         return "成功";
 
+    }
+
+    @Override
+    public User LoginByUsernameAndPassword(String username, String password) {
+        return userMapper.LoginByUsernameAndPassword(username,password);
     }
 }

@@ -1,6 +1,7 @@
-package com.fznsys.xiyou_full_platform.service;
+package com.fznsys.xiyou_full_platform.DAO.Service;
 
 import com.fznsys.xiyou_full_platform.pojo.User;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
@@ -17,4 +18,6 @@ public interface UserService {
     String insert(User user);
 
     User getUserById(Integer id);
+
+    User LoginByUsernameAndPassword(String username,String password);
 }
