@@ -1,4 +1,4 @@
-package com.example.ssmspringboot.util;
+package com.fznsys.xiyou_full_platform.util;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;

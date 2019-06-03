@@ -1,9 +1,9 @@
-package com.example.ssmspringboot.service.impl;
+package com.fznsys.xiyou_full_platform.service.impl;
 
 
-import com.example.ssmspringboot.dao.UserMapper;
-import com.example.ssmspringboot.domain.User;
-import com.example.ssmspringboot.service.UserService;
+import com.fznsys.xiyou_full_platform.dao.UserMapper;
+import com.fznsys.xiyou_full_platform.pojo.User;
+import com.fznsys.xiyou_full_platform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;

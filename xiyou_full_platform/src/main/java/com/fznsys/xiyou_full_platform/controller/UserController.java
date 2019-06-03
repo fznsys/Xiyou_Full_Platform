@@ -1,10 +1,10 @@
-package com.example.ssmspringboot.controller;
+package com.fznsys.xiyou_full_platform.controller;
 
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.ssmspringboot.domain.User;
-import com.example.ssmspringboot.service.UserService;
+import com.fznsys.xiyou_full_platform.pojo.User;
+import com.fznsys.xiyou_full_platform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
