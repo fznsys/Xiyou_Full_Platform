@@ -1,8 +1,8 @@
-package com.example.ssmspringboot.dao;
+package com.fznsys.xiyou_full_platform.dao;
 
 
 
-import com.example.ssmspringboot.domain.User;
+import com.fznsys.xiyou_full_platform.pojo.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

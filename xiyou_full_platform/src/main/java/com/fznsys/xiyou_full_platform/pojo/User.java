@@ -1,10 +1,8 @@
-package com.example.ssmspringboot.domain;
+package com.fznsys.xiyou_full_platform.pojo;
 
 
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -17,9 +15,8 @@ import java.io.Serializable;
 @Data
 public class User implements Serializable {
     private static final long serialVersionUID = 6515261573146253923L;
-    private  Integer id;
+    private Integer id;
     private String username;
-
     private String password;
     private String role;
 

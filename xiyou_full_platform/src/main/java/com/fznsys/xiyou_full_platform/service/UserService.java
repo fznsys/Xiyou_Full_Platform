@@ -1,8 +1,7 @@
-package com.example.ssmspringboot.service;
+package com.fznsys.xiyou_full_platform.service;
 
 
-
-import com.example.ssmspringboot.domain.User;
+import com.fznsys.xiyou_full_platform.pojo.User;
 
 import java.util.ArrayList;
 
