@@ -26,9 +26,7 @@ public class HttpAspect {
         System.out.println("login()开始");
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        logger.info("url={}", request.getRequestURL());
-        logger.info("method={}", request.getMethod());
-        logger.info("ip={}", request.getRemoteAddr());
+
 
     }
 
