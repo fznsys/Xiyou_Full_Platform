@@ -912,10 +912,10 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="229" parent="2" name="user"/>
-    <column id="230" parent="229" name="UID">
+    <table id="229" parent="2" name="tb_user"/>
+    <column id="230" parent="229" name="id">
       <Position>1</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -927,7 +927,7 @@
     </column>
     <column id="232" parent="229" name="username">
       <Position>3</Position>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -937,10 +937,24 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="234" parent="229" name="PRIMARY">
+    <column id="234" parent="229" name="role">
+      <Position>5</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="235" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>UID</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <trigger id="236" parent="229" name="insertpassword">
+      <Turn>before-row</Turn>
+      <Events>I</Events>
+    </trigger>
+    <trigger id="237" parent="229" name="updatepassword">
+      <Turn>before-row</Turn>
+      <Events>U</Events>
+    </trigger>
   </database-model>
 </dataSource>
