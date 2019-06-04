@@ -1,9 +1,8 @@
 package com.fznsys.xiyou_full_platform.DAO.impl;
 
-import com.fznsys.xiyou_full_platform.DAO.Mapper.UserMapper;
+import com.fznsys.xiyou_full_platform.mapper.UserMapper;
 import com.fznsys.xiyou_full_platform.pojo.User;
 import com.fznsys.xiyou_full_platform.DAO.Service.UserService;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -27,7 +26,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-
     @Cacheable()
     public User getUserById(Integer id) {
         System.out.println("getUserByIdService");
