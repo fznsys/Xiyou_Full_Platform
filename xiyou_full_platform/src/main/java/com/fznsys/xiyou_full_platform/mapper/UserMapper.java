@@ -1,6 +1,7 @@
 package com.fznsys.xiyou_full_platform.mapper;
 
 import com.fznsys.xiyou_full_platform.pojo.User;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public interface UserMapper {
 
     @Select("select * from tb_user where username=#{username} and password=md5(#{password})")
-    User LoginByUsernameAndPassword(@Param("username")String username,@Param("password")String password);
+    User LoginByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     @Select("  SELECT * FROM tb_user WHERE username = #{username}")
     User findByUsername(String username);

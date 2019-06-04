@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-
     @Cacheable()
     public User getUserById(Integer id) {
         System.out.println("getUserByIdService");
@@ -73,6 +72,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User LoginByUsernameAndPassword(String username, String password) {
-        return userMapper.LoginByUsernameAndPassword(username,password);
+        return userMapper.LoginByUsernameAndPassword(username, password);
     }
 }
