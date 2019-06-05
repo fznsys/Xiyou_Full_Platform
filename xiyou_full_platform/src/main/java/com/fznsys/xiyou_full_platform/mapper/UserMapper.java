@@ -20,7 +20,7 @@ public interface UserMapper {
     ArrayList<User> findAll();
 
     @Select("select * from tb_user where id=#{id}")
-    User findById(Integer id);
+    User findById(String id);
 
     @Update("update tb_user set username = #{username}, password = #{password}, role=#{role}  where id = #{id}")
     void update(User user);

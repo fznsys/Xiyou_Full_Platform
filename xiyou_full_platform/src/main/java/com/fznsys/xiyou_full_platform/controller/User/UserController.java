@@ -1,17 +1,19 @@
-package com.fznsys.xiyou_full_platform.controller;
+package com.fznsys.xiyou_full_platform.controller.User;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fznsys.xiyou_full_platform.pojo.User;
 import com.fznsys.xiyou_full_platform.service.UserService;
+import com.fznsys.xiyou_full_platform.util.LayuiJSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-@Controller // 声明这是Controller层
+@RestController // 声明这是Controller层
 
 public class UserController {
 
@@ -20,7 +22,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
+
     public User login(User user) {
         // 调用dao层
         return userService.LoginByUsernameAndPassword(user.getUsername(),user.getPassword());
@@ -34,39 +36,29 @@ public class UserController {
     }
 
     @RequestMapping(value = "/getUser")
-    @ResponseBody
-
-    public JSONObject getAll() {
+     public JSONObject getAll() {
         ArrayList userList = userService.getAll();
-        System.out.println(userList);
-        JSONObject rootObject = new JSONObject();
+        return LayuiJSON.layuiJSON(userList);
+        /*JSONObject rootObject = new JSONObject();
         rootObject.put("code", 0);
         rootObject.put("msg", "");
         rootObject.put("count", 1000);
-        rootObject.put("data", userList);
-
-        return rootObject;
+        rootObject.put("date",userList);
+        return rootObject;*/
     }
 
     @RequestMapping(value = "/getUserById")
-    @ResponseBody
-    public JSONObject getUserById(Integer id) {
-        System.out.println(id);
-        // User user=userService.getUserById(id);
-        User user = userService.getUserById(id);
-        System.out.println(user);
-        JSONObject rootObject = new JSONObject();
-        rootObject.put("code", 0);
-        rootObject.put("msg", "");
-        rootObject.put("count", 1000);
-        rootObject.put("data", user);
 
-        return rootObject;
+    public JSONObject getUserById(String id) {
+
+        User user = userService.getUserById(id);
+
+        return LayuiJSON.layuiJSON(user);
     }
 
     @RequestMapping(value = "/deleteUser")
-    @ResponseBody
-    public String delete(Integer id) {
+
+    public String delete(String id) {
         User user = new User();
         user.setId(id);
         String msg = userService.delete(id);
@@ -75,8 +67,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser")
-    @ResponseBody
-    public ArrayList update(Integer id) {
+    public ArrayList update(String id) {
         User user = new User();
         user.setId(id);
         user.setUsername("111");
@@ -88,7 +79,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/insertUser")
-    @ResponseBody
+
     public String insert(User user) {
         String msg = "成功";
         userService.insert(user);

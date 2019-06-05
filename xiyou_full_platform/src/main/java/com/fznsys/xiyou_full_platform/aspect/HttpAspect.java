@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HttpAspect {
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
-    @Pointcut("execution(public * com.fznsys.xiyou_full_platform.controller.UserController.login(..))")
+    @Pointcut("execution(public * com.fznsys.xiyou_full_platform.controller.Order.MenuController.getlist(..))")
     public void HttpAspect() {
 
     }

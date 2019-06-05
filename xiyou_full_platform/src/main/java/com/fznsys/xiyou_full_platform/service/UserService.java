@@ -13,11 +13,11 @@ public interface UserService {
 
     ArrayList<User> update(User user);
 
-    String delete(Integer id);
+    String delete(String id);
 
     String insert(User user);
 
-    User getUserById(Integer id);
+    User getUserById(String id);
 
     User LoginByUsernameAndPassword(String username,String password);
 }

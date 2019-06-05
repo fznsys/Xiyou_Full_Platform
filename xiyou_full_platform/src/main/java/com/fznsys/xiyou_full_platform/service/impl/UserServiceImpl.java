@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
 
     @Cacheable()
-    public User getUserById(Integer id) {
+    public User getUserById(String id) {
         System.out.println("getUserByIdService");
         return userMapper.findById(id);
     }
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @CacheEvict(key = "#id")
-    public String delete(Integer id) {
+    public String delete(String id) {
         User user = new User();
         user.setId(id);
         String msg = userMapper.delete(user);
