@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-@RestController // 声明这是Controller层
 
+@RestController // 声明这是Controller层
 public class UserController {
 
     // 依赖注入
