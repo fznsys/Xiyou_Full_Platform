@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.findById(id);
     }
 
+
     @Override
     @Cacheable()
     public ArrayList<User> getAll() {
