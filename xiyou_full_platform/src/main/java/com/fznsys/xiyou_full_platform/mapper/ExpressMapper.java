@@ -15,19 +15,19 @@ import java.util.ArrayList;
 @Repository
 public interface ExpressMapper {
     /**查询所有快递单*/
-    @Select("select * from tb_express")
+    @Select("select * from tb_express_order")
     ArrayList<Express> findAll();
 
     /**查看已取货的快递*/
-    @Select("select * from tb_express where express_status=1")
+    @Select("select * from tb_express_order where express_status=1")
     ArrayList<Express> findAlreadyTakenExpress();
 
     /**查看已取货的快递*/
-    @Select("select * from tb_express where express_status=1")
+    @Select("select * from tb_express_order where express_status=1")
     ArrayList<Express> findNotTakenExpress();
 
     /**查询单个快递*/
-    @Select("select * from tb_express where num=#{num}")
+    @Select("select * from tb_express_order where num=#{num}")
     Express findExpressByNum(String num);
 
 //    /**下单后，修改快递状态*/
@@ -35,10 +35,10 @@ public interface ExpressMapper {
 //    void updateExpress(Express express,@Param("couriername") String courier);
 
     /**新增快递单*/
-    @Insert("insert into tb_express values(#{id},#{telephone},#{num},#{company},#{adress},#{express_status},#{courier},#{express_id})")
+    @Insert("insert into tb_express_order values(#{id},#{telephone},#{num},#{company},#{adress},#{express_status},#{courier},#{express_id})")
     void addExpress(Express express);
 
     /**删除快递单*/
-    @Delete("delete from tb_express where num=#{num}")
+    @Delete("delete from tb_express_order where num=#{num}")
     void deleteExpress(Express express);
 }
