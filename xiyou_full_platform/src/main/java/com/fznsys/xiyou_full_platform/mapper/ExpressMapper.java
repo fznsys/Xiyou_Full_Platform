@@ -31,11 +31,11 @@ public interface ExpressMapper {
     Express findExpressByNum(String num);
 
 //    /**下单后，修改快递状态*/
-//    @Update("update tb_express set status=1,")
+//    @Update("update tb_express_order set status=1,")
 //    void updateExpress(Express express,@Param("couriername") String courier);
 
     /**新增快递单*/
-    @Insert("insert into tb_express_order values(#{id},#{telephone},#{num},#{company},#{adress},#{express_status},#{courier},#{express_id})")
+    @Insert("insert into tb_express_order values(#{id},#{phonenumber},#{phonenumber},#{recivename},#{company},#{address},#{expressnum},#{courierid},#{couriername},#{status},#{price})")
     void addExpress(Express express);
 
     /**删除快递单*/
