@@ -1,4 +1,4 @@
-package com.fznsys.xiyou_full_platform.controller.Order;
+package com.fznsys.xiyou_full_platform.controller.order;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fznsys.xiyou_full_platform.pojo.Merchant;

@@ -1,4 +1,4 @@
-package com.fznsys.xiyou_full_platform.controller.User;
+package com.fznsys.xiyou_full_platform.controller.user;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fznsys.xiyou_full_platform.pojo.User;

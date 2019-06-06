@@ -1,4 +1,4 @@
-package com.fznsys.xiyou_full_platform.controller.Order;
+package com.fznsys.xiyou_full_platform.controller.order;
 
 import com.fznsys.xiyou_full_platform.pojo.Food;
 import com.fznsys.xiyou_full_platform.service.FoodService;
