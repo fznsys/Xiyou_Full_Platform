@@ -231,17 +231,16 @@
                 </div>
             </xblock>
 
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}"
-                   lay-filter="demo">
+            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}">
                 <thead>
                 <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field:'id', width:120, sort: true, fixed: true}">ID</th>
+                    <th lay-data="{type:'checkbox'}"></th>
+                    <th lay-data="{field:'id', width:120}">ID</th>
                     <th lay-data="{field:'storename', width:250}">商户名字</th>
                     <th lay-data="{field:'storetype', width:150}">类型</th>
                     <th lay-data="{field:'storeman', width:200}">责任人</th>
                     <th lay-data="{field:'status', width:100}">状态</th>
-                    <th lay-data="{fixed: 'right', width:350, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{ width:350, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>

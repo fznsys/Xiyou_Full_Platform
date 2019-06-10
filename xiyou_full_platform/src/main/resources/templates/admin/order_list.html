@@ -229,18 +229,17 @@
                     <span class="x-right" style="line-height:40px">共有数据：88 条</span>
                 </div>
             </xblock>
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}"
-                   lay-filter="demo">
+            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}">
                 <thead>
                 <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}">ID</th>
+                    <th lay-data="{type:'checkbox'}"></th>
+                    <th lay-data="{field: 'id', title: 'ID', width: 80}">ID</th>
                     <th lay-data="{field: 'userid', width: 120, edit: 'text'}">用户ID</th>
                     <th lay-data="{field: 'orderid', width: 150, edit: 'text'}">订单号</th>
-                    <th lay-data="{field: 'date', width: 150, edit: 'text', sort: true}">下单时间</th>
+                    <th lay-data="{field: 'date', width: 150, edit: 'text'e}">下单时间</th>
                     <th lay-data="{field: 'num', width: 100}">金额</th>
                     <th lay-data="{field: 'mark'}">备注</th>
-                    <th lay-data="{fixed: 'status', width:350, align:'center'}">状态</th>
+                    <th lay-data="{width:350, align:'center'}">状态</th>
                 </tr>
                 </thead>
             </table>

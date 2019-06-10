@@ -5,19 +5,19 @@
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../static/X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="../../../static/X-admin/css/font.css">
+    <link rel="stylesheet" href="../../../static/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../../static/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../../static/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../static/X-admin/js/xadmin.js"></script>
+    <script src="../../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../static/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="../index.html">XFP—西邮服务平台后台</a></div>
+    <div class="logo"><a href="">XFP—西邮服务平台后台</a></div>
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
@@ -38,24 +38,40 @@
     <div class="left-nav">
         <div id="side-nav">
             <ul id="nav">
-                <li class="list">
+                <li class="list open">
                     <a href="index.html">
                         <i class="layui-icon">&#xe609;</i>
-                        校园快递
+                        商家信息
                     </a>
                 </li>
                 <li class="list">
-                    <a href="my_express.html">
+                    <a href="modify.html">
                         <i class="layui-icon">&#xe60a;</i>
-                        我的快递
+                        修改信息
                     </a>
                 </li>
                 <li class="list">
-                    <a href="express-add.html">
-                        <i class="layui-icon">&#xe66c;</i>
-                        代取快递
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe70b;</i>
+                        商品管理
+                        <i class="iconfont nav_right">&#xe697;</i>
                     </a>
+                    <ul class="sub-menu" style="display: none">
+                        <li>
+                            <a href="goods_list.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="goods_add.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                增加商品
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -67,11 +83,10 @@
 
             <xblock>
                 <fieldset class="layui-elem-field layui-field-title site-title">
-                <legend><a name="default">校园快递服务</a></legend>
-            </fieldset>
+                    <legend><a name="default">商家信息修改</a></legend>
+                </fieldset>
             </xblock>
-            <table class="layui-table" id="express_list">
-            </table>
+
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
     </div>
@@ -85,24 +100,6 @@
 <!-- 底部结束 -->
 
 <script>
-
-    layui.use('table', function () {
-        var table = layui.table;
-        table.render({
-            elem: '#express_list'
-            , url: '/'
-            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , cols: [[
-                {field: 'id', width: 80, title: 'ID'}
-                , {field: 'name', width: 120, title: '用户名'}
-                , {field: 'company', width: 120, title: '快递公司'}
-                , {field: 'expressnumber', width: 150, title: '快递单号'}
-                , {field: 'phonenumber', title: '联系电话', width: 200, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , {field: 'address', title: '送达地址', width: 300}
-                , {field: 'status', title: '状态'}
-            ]]
-        });
-    });
 
 
 </script>

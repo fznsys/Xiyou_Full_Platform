@@ -91,19 +91,18 @@
             </xblock>
 
             <table class="layui-table"
-                   lay-data="{width: 892, height:330, url:'/demo/table/user/', page:true, id:'idTest'}"
-                   lay-filter="demo">
+                   lay-data="{width: 892, height:330, url:'/demo/table/user/', page:true, id:'idTest'}">
                 <thead>
                 <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
+                    <th lay-data="{type:'checkbox'}"></th>
+                    <th lay-data="{field:'id', width:80}">ID</th>
                     <th lay-data="{field:'name', width:80}">姓名</th>
-                    <th lay-data="{field:'company', width:80, sort: true}">快递公司</th>
+                    <th lay-data="{field:'company', width:80}">快递公司</th>
                     <th lay-data="{field:'expressnum', width:80}">快递编号</th>
                     <th lay-data="{field:'phonenumber', width:160}">联系电话</th>
-                    <th lay-data="{field:'address', width:80, sort: true}">送达地址</th>
+                    <th lay-data="{field:'address', width:80}">送达地址</th>
                     <th lay-data="{field:'status', width:80}">状态</th>
-                    <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{width:178, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>
