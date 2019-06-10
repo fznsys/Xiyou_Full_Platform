@@ -11,7 +11,7 @@ public interface UserService {
 
     ArrayList<User> getAll();
 
-    ArrayList<User> update(User user);
+    User update(User user);
 
     String delete(String id);
 

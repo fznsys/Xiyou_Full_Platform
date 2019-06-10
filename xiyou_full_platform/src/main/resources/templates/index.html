@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
     <script src="layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="X-admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="jquery/jquery-3.3.1.js"></script>
 
 </head>
 <body>
@@ -75,7 +76,15 @@
             data: (user),
             dataType: 'json',
             success: function (data) {
-                window.location.href="success.html";
+                var role=data.role;
+                if(role=="2") {
+                    window.location.href = "success.html";
+                }else if(role=="1"){
+                    window.location.href="";
+                }else if(role=="0"){
+                    window.location.href="admin/index.html";s
+                }
+
 
             },
             error: function () {

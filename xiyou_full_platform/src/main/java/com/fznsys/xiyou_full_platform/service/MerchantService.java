@@ -12,7 +12,7 @@ public interface MerchantService {
 
     List<Merchant> insertMerchant(Merchant merchant);
 
-    List<Merchant> deleteMerchant(String id);
+    void deleteMerchant(String id);
 
     Merchant getMerchantById(String id);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 @RestController // 声明这是Controller层
@@ -59,6 +60,7 @@ public class UserController {
     @RequestMapping(value = "/deleteUser")
 
     public String delete(String id) {
+        System.out.println(id);
         User user = new User();
         user.setId(id);
         String msg = userService.delete(id);
@@ -67,24 +69,26 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser")
-    public ArrayList update(String id) {
+    public void update(String id) {
         User user = new User();
         user.setId(id);
         user.setUsername("111");
         user.setPassword("111");
         user.setRole("www");
-        ArrayList msg = userService.update(user);
-        return msg;
+        userService.update(user);
+
 
     }
 
     @RequestMapping(value = "/insertUser")
 
     public String insert(User user) {
-        String msg = "成功";
+
+       String uuid= UUID.randomUUID().toString();
+       user.setId(uuid);
+        System.out.println(user);
         userService.insert(user);
-
+        String msg = "成功";
         return msg;
-
     }
 }

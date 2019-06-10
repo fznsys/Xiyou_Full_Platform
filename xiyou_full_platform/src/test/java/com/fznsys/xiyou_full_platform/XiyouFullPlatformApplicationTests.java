@@ -2,6 +2,7 @@ package com.fznsys.xiyou_full_platform;
 
 import com.fznsys.xiyou_full_platform.mapper.LifePaymentMapper;
 import com.fznsys.xiyou_full_platform.pojo.LifePayment;
+import com.fznsys.xiyou_full_platform.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ import java.util.UUID;
 @SpringBootTest
 public class XiyouFullPlatformApplicationTests {
     @Autowired
-    LifePaymentMapper lifePaymentMapper;
+    UserService userService;
     @Test
     public void contextLoads() {
+        userService.getUserById("11");
 
 //        lifePaymentMapper.addPayment(UUID.randomUUID().toString(),"11","0",
 //                "12.12",DateFormat.getDateTimeInstance().format(new Date()),"0","");
