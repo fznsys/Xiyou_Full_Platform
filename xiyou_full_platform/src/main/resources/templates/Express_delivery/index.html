@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../static/X-admin/css/xadmin.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../../static/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../static/X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
@@ -90,16 +90,16 @@
         var table = layui.table;
         table.render({
             elem: '#express_list'
-            , url: '/'
+            , url: '/express/findAll'
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             , cols: [[
-                {field: 'id', width: 80, title: 'ID', sort: true}
-                , {field: 'name', width: 120, title: '用户名'}
-                , {field: 'company', width: 120, title: '快递公司', sort: true}
+                // {field: 'id', width: 80, title: 'ID'}
+                {field: 'name', width: 120, title: '用户名'}
+                , {field: 'company', width: 120, title: '快递公司'}
                 , {field: 'expressnumber', width: 150, title: '快递单号'}
                 , {field: 'phonenumber', title: '联系电话', width: 200, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , {field: 'address', title: '送达地址', width: 300, sort: true}
-                , {field: 'status', title: '状态', sort: true}
+                , {field: 'address', title: '送达地址', width: 300}
+                , {field: 'status', title: '状态'}
             ]]
         });
     });

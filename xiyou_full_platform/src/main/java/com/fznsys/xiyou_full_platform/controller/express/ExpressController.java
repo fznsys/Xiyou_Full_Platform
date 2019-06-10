@@ -1,19 +1,21 @@
 package com.fznsys.xiyou_full_platform.controller.express;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fznsys.xiyou_full_platform.convert.ExpressForm2ExpressConvert;
-import com.fznsys.xiyou_full_platform.enums.ResultEnum;
-import com.fznsys.xiyou_full_platform.expection.ExpressException;
 import com.fznsys.xiyou_full_platform.form.ExpressForm;
 import com.fznsys.xiyou_full_platform.pojo.Express;
 import com.fznsys.xiyou_full_platform.pojo.User;
 import com.fznsys.xiyou_full_platform.service.ExpressService;
 import com.fznsys.xiyou_full_platform.service.UserService;
+import com.fznsys.xiyou_full_platform.util.LayuiJSON;
 import com.fznsys.xiyou_full_platform.vo.ExpressVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -33,28 +35,38 @@ public class ExpressController {
 
 
     @RequestMapping("/findAll")
-    public ArrayList<ExpressVO> findAll(){
+    public JSONObject findAll(){
 
         ArrayList<Express> expressArrayList = expressService.findAll();
-        System.out.println(expressArrayList.toString());
+
         ArrayList<ExpressVO> expressVOArrayList=new ArrayList<>();
         for (Express express : expressArrayList) {
             ExpressVO expressVO = new ExpressVO();
+
             BeanUtils.copyProperties(express,expressVO);
+
             expressVOArrayList.add(expressVO);
         }
+        return  LayuiJSON.layuiJSON(expressVOArrayList);
 
-        return expressVOArrayList;
+
     }
 
     @RequestMapping("/insert")
     public void insertExpress(@Valid ExpressForm expressForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             log.error("[创建订单] 参数不正确");
-            throw new ExpressException(ResultEnum.PARAM_ERROR.getCode(),bindingResult.getFieldError().getDefaultMessage());
+            //throw new ExpressException(ResultEnum.PARAM_ERROR.getCode(),bindingResult.getFieldError().getDefaultMessage());
         }
+        System.out.println(expressForm.toString());
         Express express = ExpressForm2ExpressConvert.convert(expressForm);
 
         expressService.addExpress(express);
+    }
+
+    @RequestMapping("/delete")
+    public void deleteExpress(@RequestParam("id") String id,
+                              @RequestParam("recived") String reciveid){
+        expressService.deleteExpress(id,reciveid);
     }
 }

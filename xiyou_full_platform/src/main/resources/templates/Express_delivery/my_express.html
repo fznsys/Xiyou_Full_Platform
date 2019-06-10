@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>后台登录-X-admin1.1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../static/X-admin/css/xadmin.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../static/X-admin/js/xadmin.js"></script>
-
+    <script src="/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -86,32 +86,32 @@
                     <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
                     <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
                     <button class="layui-btn" data-type="isAll">验证是否全选</button>
-                    <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+                    <span class="x-right" style="line-height:40px">共有数据：3 条</span>
                 </div>
             </xblock>
 
             <table class="layui-table"
-                   lay-data="{width: 892, height:330, url:'/demo/table/user/', page:true, id:'idTest'}"
-                   lay-filter="demo">
+                   lay-data="{ url:'/express/findAll'}"
+                   >
                 <thead>
                 <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
+                    <th lay-data="{type:'checkbox'}"></th>
+                    <!--<th lay-data="{field:'id', width:80, fixed: true}">ID</th>-->
                     <th lay-data="{field:'name', width:80}">姓名</th>
-                    <th lay-data="{field:'company', width:80, sort: true}">快递公司</th>
+                    <th lay-data="{field:'company', width:80}">快递公司</th>
                     <th lay-data="{field:'expressnum', width:80}">快递编号</th>
                     <th lay-data="{field:'phonenumber', width:160}">联系电话</th>
-                    <th lay-data="{field:'address', width:80, sort: true}">送达地址</th>
+                    <th lay-data="{field:'address', width:80}">送达地址</th>
                     <th lay-data="{field:'status', width:80}">状态</th>
-                    <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{width:178, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>
 
             <script type="text/html" id="barDemo">
-                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+                <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>-->
                 <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" onclick="">删除</a>
             </script>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>

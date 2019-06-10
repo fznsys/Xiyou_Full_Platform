@@ -7,6 +7,7 @@ import com.fznsys.xiyou_full_platform.service.ExpressService;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -42,8 +43,15 @@ public class ExpressServiceImpl implements ExpressService {
     }
 
     @Override
+    @Transactional
     public void addExpress(Express express) {
         express.setId(UUID.randomUUID().toString());
         expressMapper.addExpress(express);
+    }
+
+    @Override
+    @Transactional
+    public void deleteExpress(String id,String reciveid) {
+        expressMapper.deleteExpress(id,reciveid);
     }
 }
