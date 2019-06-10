@@ -9,35 +9,36 @@ import lombok.Data;
  */
 @Data
 public class ExpressVO {
-
+    @JsonProperty("id")
     private String id;
 
-    /*@JsonProperty("userid")
-    private String reciveid;*/
-
-    @JsonProperty("telephone")
-    private String phonenumber;
-
-    @JsonProperty("username")
+    @JsonProperty("name")
     private String recivename;
 
     @JsonProperty("company")
     private String company;
 
+    @JsonProperty("expressnum")
+    private String expressnum;
+
+    /*@JsonProperty("userid")
+    private String reciveid;*/
+
+    @JsonProperty("phonenumber")
+    private String phonenumber;
+
     @JsonProperty("address")
     private String address;
 
-    @JsonProperty("num")
-    private String expressnum;
 
     /*@JsonProperty("courierid")
     private String courierid;*/
 
-    @JsonProperty("courier")
-    private String couriername;
+    //@JsonProperty("courier")
+    //private String couriername;
 
     @JsonProperty("status")
-    private int express_status;
+    private String status;
 
 
 }

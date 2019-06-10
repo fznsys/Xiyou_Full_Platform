@@ -29,5 +29,5 @@ public class Express {
     /**价格*/
     private String price;
     /**快递状态*/
-    private String status;
+    private String status="0";
 }

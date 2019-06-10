@@ -18,4 +18,6 @@ public interface ExpressService {
     Express findExpressByNum(String num);
 
     void addExpress(Express express);
+
+    void deleteExpress(String id,String reciveid);
 }
