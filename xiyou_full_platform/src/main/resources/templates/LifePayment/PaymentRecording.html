@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>生活缴费</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="/layui/css/layui.css">-->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="X-admin/css/font.css">
-    <link rel="stylesheet" href="X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <!--<link rel="stylesheet" href="layui/css/layui.css">-->
+
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
@@ -26,7 +27,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="./login.html">退出</a></dd>
+                <dd><a href="../login.html">退出</a></dd>
             </dl>
         </li>
     </ul>
@@ -98,8 +99,11 @@
     <div class="page-content">
         <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
-
-
+            <fieldset class="layui-elem-field layui-field-title site-title">
+                <legend><a name="default">信息统计</a></legend>
+            </fieldset>
+            <table class="layui-hide" id="test">
+            </table>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
     </div>
@@ -115,24 +119,61 @@
 <div class="bg-changer">
     <div class="swiper-container changer-list">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img class="item" src="./images/a.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/b.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/c.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/d.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/e.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/f.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/g.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/h.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/i.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/j.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/k.jpg" alt=""></div>
-            <div class="swiper-slide"><span class="reset">初始化</span></div>
+
         </div>
     </div>
     <div class="bg-out"></div>
     <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
 </div>
 <!-- 背景切换结束 -->
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
 
+        table.render({
+            elem: '#test'
+            ,url:'/getlifetest'
+            ,toolbar: '#toolbarDemo'
+            ,title: '用户数据表'
+            ,width:"100%"
+            ,cols: [
+                [
+                    {field:'userid',title:"用户ID",align:"center"}
+                    ,{field:'type',title:"缴费类型",align:"center",template:function (t) {
+                        if(t.type=='0')
+                        {
+                            return "未缴费";
+                        }
+                        else if(t.type=='1')
+                        {
+                            return "缴费成功";
+                        }
+                        else if(t.type=='2')
+                        {
+                            return "缴费中";
+                        }
+                        else return "???";
+                    }}
+                    ,{field:'num',title:"缴费金额",align:"center"}
+                    ,{field:'date',title:"缴费时间",align:"center"}
+                    ,{field:'status',title:"缴费状态",align:"center"}
+                    ,{field:'mark',title:"备注",align:"center"}
+                ]
+            ],
+            done: function (res, curr, count) {
+                $("[data-field='type']").children().each(function(){
+                    if($(this).text()=='0'){
+                        $(this).text("未缴费");
+                    }else if($(this).text()=='1'){
+                        $(this).text("缴费成功");
+                    }
+                    else if($(this).text()=='2'){
+                        $(this).text("未缴费");
+                    };
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

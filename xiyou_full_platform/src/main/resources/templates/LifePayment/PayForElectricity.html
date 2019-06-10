@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>生活缴费</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/layui/css/layui.css">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="X-admin/css/font.css">
-    <link rel="stylesheet" href="X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <!--<link rel="stylesheet" href="layui/css/layui.css">-->
+
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
@@ -26,7 +27,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="./login.html">退出</a></dd>
+                <dd><a href="../login.html">退出</a></dd>
             </dl>
         </li>
     </ul>
@@ -98,12 +99,38 @@
     <div class="page-content">
         <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
-            <fieldset class="layui-elem-field layui-field-title site-title">
-                <legend><a name="default">信息统计</a></legend>
-            </fieldset>
-            <table class="layui-hide" id="test" lay-data="">
+            <div class="login-box">
+                <form class="layui-form layui-form-pane" >
 
-            </table>
+                    <h3>缴纳电费</h3>
+                    <label class="login-title" for="username">缴费金额</label>
+                    <div class="layui-form-item">
+                        <label class="login-form layui-form-label " style="width: 50px"><i class="layui-icon layui-icon-rmb"></i></label>
+                        <div class="layui-input-inline login-inline">
+                            <input type="text" name="username" id="username" lay-verify="required" placeholder="请输入缴费金额" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <label class="login-title" for="password">缴费方式</label>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label login-form" style="width: 50px"><i class="layui-icon layui-icon-cart"></i></label>
+
+                        <div class="layui-input-inline login-inline" id="password">
+                            <select>
+                                <option>支付宝</option>
+                                <option>微信支付</option>
+                                <option>银联</option>
+                                <option>Visa</option>
+                                <option>Paypal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input type="button" class="btn btn-warning pull-right" onclick='' value="缴费"/>
+                        <div class="forgot"><a href="member-password.html" class="forgot"></a></div>
+                    </div>
+                </form>
+            </div>
+
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
     </div>
@@ -137,29 +164,6 @@
     <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
 </div>
 <!-- 背景切换结束 -->
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
 
-        table.render({
-            elem: '#test'
-            ,url:'/getlifetest'
-            ,toolbar: '#toolbarDemo'
-            ,title: '用户数据表'
-            ,width:"100%"
-            ,cols: [
-                [
-                    {field:'userid',title:"用户ID",align:"center"}
-                    ,{field:'type',title:"缴费类型",align:"center"}
-                    ,{field:'num',title:"缴费金额",align:"center"}
-                    ,{field:'date',title:"缴费时间",align:"center"}
-                    ,{field:'status',title:"缴费状态",align:"center"}
-                    ,{field:'mark',title:"备注",align:"center"}
-                ]
-            ]
-
-        });
-    });
-</script>
 </body>
 </html>
