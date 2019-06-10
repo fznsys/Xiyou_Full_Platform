@@ -231,7 +231,7 @@
                 </div>
             </xblock>
 
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}">
+            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
                 <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
@@ -245,11 +245,11 @@
                 </thead>
             </table>
             <script type="text/html" id="barDemo">
-                <a title="编辑" href="javascript:;" onclick="store_edit(this,'编辑','member-edit.html','4','','510')"
+                <a title="编辑" href="javascript:;" lay-even="edit"
                    class="ml-5" style="text-decoration:none">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
-                <a title="删除" href="javascript:;" onclick="store_del(this,'1')"
+                <a title="删除" href="javascript:;" lay-even="del"
                    style="text-decoration:none">
                     <i class="layui-icon">&#xe640;</i>
                 </a>

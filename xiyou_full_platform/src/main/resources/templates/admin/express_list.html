@@ -229,7 +229,7 @@
             </div>
                </xblock>
 
-            <table class="layui-table" lay-data="{width: 1500, url:'/demo/table/user/', page:true, id:'idTest'}">
+            <table class="layui-table" lay-data="{width: 1500, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
                 <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
@@ -241,7 +241,7 @@
                     <th lay-data="{field:'address'}">地址</th>
                     <th lay-data="{field:'status', width:80}">状态</th>
                     <th lay-data="{field:'courier', width:120}">快递员</th>
-                    <th lay-data="{width:200, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{ width:200, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>
