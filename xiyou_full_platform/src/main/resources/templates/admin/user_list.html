@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../static/X-admin/css/xadmin.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script src="/layui/css/layui.css" charset="utf-8"></script>
+    <link rel="stylesheet" href="../X-admin/css/font.css">
+    <link rel="stylesheet" href="../X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../../static/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../static/X-admin/js/xadmin.js"></script>
+
+    <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-3.3.1.js"></script
 
 </head>
 <body>
@@ -233,16 +236,16 @@
                 </div>
             </xblock>
 
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}"
+            <table class="layui-table" lay-data="{ url:'/getUser',  id:'idTest'}"
                    lay-filter="demo">
                 <thead>
                 <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field:'id', width:120, sort: true, fixed: true}">ID</th>
+                    <th lay-data="{type:'checkbox'}"></th>
+
                     <th lay-data="{field:'username', width:250}">用户名</th>
-                    <th lay-data="{field:'company', width:200}">名字</th>
-                    <th lay-data="{field:'number', width:200}">角色</th>
-                    <th lay-data="{fixed: 'right', width:350, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{field:'name', width:200}">名字</th>
+                    <th lay-data="{field:'role', width:200}">角色</th>
+                    <th lay-data="{ width:350, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>
@@ -251,7 +254,7 @@
                    class="ml-5" style="text-decoration:none">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
-                <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
+                <a title="删除" href="javascript:;" lay-event="del"
                    style="text-decoration:none">
                     <i class="layui-icon">&#xe640;</i>
                 </a>
@@ -314,7 +317,16 @@
                 layer.msg('ID：' + data.id + ' 的查看操作');
             } else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
+                    var  id=data.id;
+                    $.ajax({
+                        type: "post",
+                        url: "/deleteUser?id="+id,
+                        data: (id),
+                        dataType: 'json',
+                    });
                     obj.del();
+
+
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {

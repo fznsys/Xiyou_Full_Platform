@@ -17,7 +17,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 
 import java.time.Duration;
 
-
 @Configuration
 public class CacheConfig extends CachingConfigurerSupport {
     @Bean
@@ -36,3 +35,4 @@ public class CacheConfig extends CachingConfigurerSupport {
         return new RedisCacheManager(redisCacheWriter, defaultCacheConfig);
     }
 }
+

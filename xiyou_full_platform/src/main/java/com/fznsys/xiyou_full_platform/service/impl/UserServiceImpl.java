@@ -43,29 +43,29 @@ public class UserServiceImpl implements UserService {
     @Override
     @CachePut(key = "#user.id")
 
-    public ArrayList<User> update(User user) {
+    public User update(User user) {
         System.err.println("执行这里，更新数据库，更新缓存....");
         userMapper.update(user);
-        ArrayList<User> userArrayList = userMapper.findAll();
+        //ArrayList<User> userArrayList = userMapper.findAll();
 
-        return userArrayList;
+        return user;
 
     }
 
     @Override
     @CacheEvict(key = "#id")
     public String delete(String id) {
-        User user = new User();
-        user.setId(id);
-        String msg = userMapper.delete(user);
+        System.err.println("执行这里，删除数据，更新缓存....");
 
-        return "成功";
+        userMapper.delete(id);
+        String msg ="成功";
+        return msg;
 
     }
 
     @Override
     public String insert(User user) {
-        userMapper.insert(user);
+        userMapper.insert(user.getId(),user.getName(),user.getUsername(),user.getPassword(),user.getRole());
 
         return "成功";
 

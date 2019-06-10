@@ -30,9 +30,11 @@ public class MerchantController {
     public List<Merchant> insertmerchant(Merchant merchant){
         return merchantService.insertMerchant(merchant);
     }
-    @RequestMapping("/deletemerchantById")
-    public List<Merchant> deletemerchant(String id){
 
-        return merchantService.deleteMerchant(id);
+    @RequestMapping("/deletemerchantById")
+    public void deletemerchant(String id){
+        System.out.println(id);
+        System.out.println("deletemerchantById");
+         merchantService.deleteMerchant(id);
     }
 }

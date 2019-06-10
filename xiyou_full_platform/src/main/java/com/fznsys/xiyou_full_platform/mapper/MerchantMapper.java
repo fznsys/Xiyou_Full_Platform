@@ -20,7 +20,7 @@ public interface MerchantMapper {
     ArrayList<Merchant> insert(Merchant merchant);
 
     @Delete("delete from tb_takeout_merchant where id=#{id}")
-    ArrayList<Merchant> delete(String id);
+    void  delete(String id);
 
     @Select(" SELECT * FROM tb_takeout_merchant where id=#{id}")
     Merchant selectByMerchantId(String id);

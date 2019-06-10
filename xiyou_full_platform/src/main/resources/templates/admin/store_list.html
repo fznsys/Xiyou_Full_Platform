@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../static/X-admin/css/xadmin.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script src="/layui/css/layui.css" charset="utf-8"></script>
+    <link rel="stylesheet" href="../X-admin/css/font.css">
+    <link rel="stylesheet" href="../X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../../static/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../static/X-admin/js/xadmin.js"></script>
+
+    <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-3.3.1.js"></script>
+
 
 </head>
 <body>
@@ -231,26 +235,28 @@
                 </div>
             </xblock>
 
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}"
-                   lay-filter="demo">
+            <table class="layui-table" lay-data="{url:'/getmerchantlist', id:'idTest'}"  lay-filter="demo">
                 <thead>
                 <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field:'id', width:120, sort: true, fixed: true}">ID</th>
-                    <th lay-data="{field:'storename', width:250}">商户名字</th>
-                    <th lay-data="{field:'storetype', width:150}">类型</th>
-                    <th lay-data="{field:'storeman', width:200}">责任人</th>
-                    <th lay-data="{field:'status', width:100}">状态</th>
-                    <th lay-data="{fixed: 'right', width:350, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{type:'checkbox'}"></th>
+                    <th lay-data="{field:'id', width:120}">ID</th>
+                  <!--  <th lay-data="{field:'merchantname', width:250}">商户名字</th>-->
+                  <!--  <th lay-data="{field:'type', width:150}">类型</th>-->
+                   <!-- <th lay-data="{field:'storeman', width:200}">责任人</th>-->
+                    <th lay-data="{field:'menuid', width:200}">菜单ID</th>
+                    <th lay-data="{field:'type', width:100}">状态</th>
+                    <th lay-data="{field:'announcement', width:200}">公告</th>
+                    <th lay-data="{width:350, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>
+
             <script type="text/html" id="barDemo">
-                <a title="编辑" href="javascript:;" onclick="store_edit(this,'编辑','member-edit.html','4','','510')"
+                <a title="编辑" href="javascript:;" lay-event="detail"
                    class="ml-5" style="text-decoration:none">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
-                <a title="删除" href="javascript:;" onclick="store_del(this,'1')"
+                <a title="删除" href="javascript:;" lay-event="del"
                    style="text-decoration:none">
                     <i class="layui-icon">&#xe640;</i>
                 </a>
@@ -267,6 +273,7 @@
 </div>
 <!-- 底部结束 -->
 <!-- 页面动态效果 -->
+
 <script>
 
     layui.use(['laydate'], function () {
@@ -306,6 +313,28 @@
         table.on('checkbox(demo)', function (obj) {
             console.log(obj)
         });
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                layer.msg('ID：'+ data.id + ' 的查看操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    var  id=data.id;
+
+                    $.ajax({
+                        type: "post",
+                        url: "/deletemerchantById?id=" + id,
+                        data: (id),
+                        dataType: 'json',
+                    });
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            }
+        });
         var $ = layui.$, active = {
             getCheckData: function () { //获取选中数据
                 var checkStatus = table.checkStatus('idTest')
@@ -344,12 +373,23 @@
 
     /*商户-删除*/
     function store_del(obj, id) {
-        layer.confirm('确认要删除吗？', function (index) {
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!', {icon: 1, time: 1000});
+        var checkStatus = table.checkStatus('idTest')
+            , data = checkStatus.data;
+        alert(data.id);
+        console.log(obj);
+        $.ajax({
+            type: "post",
+            url: "/deletemerchantById?id=" + id,
+            data: (id),
+            dataType: 'json',
         });
-    }
+
+            layer.confirm('确认要删除吗？', function (index) {
+                //发异步删除数据
+                $(obj).parents("tr").remove();
+                layer.msg('已删除!', {icon: 1, time: 1000});
+            });
+        }
 
 </script>
 </body>

@@ -24,8 +24,8 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public List<Merchant> deleteMerchant(String id) {
-        return merchantMapper.delete(id);
+    public void deleteMerchant(String id) {
+         merchantMapper.delete(id);
     }
 
 
