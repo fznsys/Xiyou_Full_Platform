@@ -13,6 +13,7 @@ import com.fznsys.xiyou_full_platform.vo.ExpressVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class ExpressController {
 
 
     @RequestMapping("/findAll")
-    public JSONObject findAll(){
+    public ResponseEntity findAll(){
 
         ArrayList<Express> expressArrayList = expressService.findAll();
 
@@ -47,26 +48,27 @@ public class ExpressController {
 
             expressVOArrayList.add(expressVO);
         }
-        return  LayuiJSON.layuiJSON(expressVOArrayList);
+        JSONObject jsonObject = LayuiJSON.layuiJSON(expressVOArrayList);
+        return ResponseEntity.ok(jsonObject);
 
 
     }
 
     @RequestMapping("/insert")
-    public void insertExpress(@Valid ExpressForm expressForm, BindingResult bindingResult){
+    public ResponseEntity insertExpress(@Valid ExpressForm expressForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             log.error("[创建订单] 参数不正确");
-            //throw new ExpressException(ResultEnum.PARAM_ERROR.getCode(),bindingResult.getFieldError().getDefaultMessage());
         }
         System.out.println(expressForm.toString());
         Express express = ExpressForm2ExpressConvert.convert(expressForm);
 
         expressService.addExpress(express);
+        return ResponseEntity.ok(0);
     }
 
     @RequestMapping("/delete")
-    public void deleteExpress(@RequestParam("id") String id,
-                              @RequestParam("recived") String reciveid){
-        expressService.deleteExpress(id,reciveid);
+    public ResponseEntity deleteExpress(@RequestParam("id") String id){
+        expressService.deleteExpress(id);
+        return ResponseEntity.ok(0);
     }
 }

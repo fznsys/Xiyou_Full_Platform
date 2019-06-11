@@ -51,7 +51,7 @@ public class ExpressServiceImpl implements ExpressService {
 
     @Override
     @Transactional
-    public void deleteExpress(String id,String reciveid) {
-        expressMapper.deleteExpress(id,reciveid);
+    public void deleteExpress(String id) {
+        expressMapper.deleteExpress(id);
     }
 }
