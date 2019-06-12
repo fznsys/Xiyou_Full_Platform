@@ -5,13 +5,13 @@
     <title>后台登录-X-admin1.1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../X-admin/css/font.css">
-    <link rel="stylesheet" href="../X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
 
 
 </head>
@@ -200,23 +200,16 @@
     <div class="page-content">
         <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
-            <form class="layui-form xbs" action="">
+            <form class="layui-form xbs" action="" method="get">
                 <div class="layui-form-pane" style="text-align: center;">
                     <div class="layui-form-item" style="display: inline-block;">
-                        <label class="layui-form-label xbs768">日期范围</label>
-                        <div class="layui-input-inline xbs768">
-                            <input class="layui-input" placeholder="开始日" id="LAY_demorange_s">
-                        </div>
-                        <div class="layui-input-inline xbs768">
-                            <input class="layui-input" placeholder="截止日" id="LAY_demorange_e">
-                        </div>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off"
+                            <input type="text" id="name" placeholder="请输入用户名" autocomplete="off"
                                    class="layui-input">
                         </div>
                         <div class="layui-input-inline" style="width:80px">
-                            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i
-                                    class="layui-icon">&#xe615;</i></button>
+                            <button class="layui-btn" lay-submit="" lay-filter="search" >
+                                <i class="layui-icon">&#xe615;</i></button>
                         </div>
                     </div>
                 </div>
@@ -230,24 +223,26 @@
             </div>
                </xblock>
 
-            <table class="layui-table" lay-data="{width: 1500, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
+
+            <table class="layui-table"
+                   lay-data="{width: 1500, url:'/express/findAll'}"
+                   lay-filter="demo">
                 <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
-                    <th lay-data="{field:'id', width:60}">ID</th>
-                    <th lay-data="{field:'name', width:100}">姓名</th>
-                    <th lay-data="{field:'company', width:100}">快递公司</th>
-                    <th lay-data="{field:'expressnum', width:130}">快递编号</th>
-                    <th lay-data="{field:'phonenumber', width:200}">电话</th>
-                    <th lay-data="{field:'address'}">地址</th>
-                    <th lay-data="{field:'status', width:80}">状态</th>
-                    <th lay-data="{field:'courier', width:120}">快递员</th>
-                    <th lay-data="{ width:200, align:'center', toolbar: '#barDemo'}">操作</th>
+                    <th lay-data="{field:'name', width:80}">姓名</th>
+                    <th lay-data="{field:'company', width:80}">快递公司</th>
+                    <th lay-data="{field:'expressnum', width:100}">快递编号</th>
+                    <th lay-data="{field:'phonenumber', width:100}">联系电话</th>
+                    <th lay-data="{field:'address'，width:160}">地址</th>
+                    <th lay-data="{field:'status', width:30}">状态</th>
+                    <th lay-data="{field:'courier', width:50}">快递员</th>
+                    <th lay-data="{ width:80, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
             </table>
             <script type="text/html" id="barDemo">
-                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
                 <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
             </script>
 
@@ -265,47 +260,57 @@
 
 <!-- 页面动态效果 -->
 <script>
-layui.use('table', function(){
-  var table = layui.table;
-  //监听表格复选框选择
-  table.on('checkbox(demo)', function(obj){
-    console.log(obj)
-  });
-  //监听工具条
-  table.on('tool(demo)', function(obj){
-    var data = obj.data;
-    if(obj.event === 'del'){
-      layer.confirm('真的删除行么', function(index){
-        obj.del();
-        layer.close(index);
+
+
+
+
+
+    layui.use('table', function(){
+      var table = layui.table;
+      //监听表格复选框选择
+      table.on('checkbox(demo)', function(obj){
+        console.log(obj)
       });
-    } else if(obj.event === 'edit'){
-      layer.alert('编辑行：<br>'+ JSON.stringify(data))
-    }
-  });
+      //监听工具条
+      table.on('tool(demo)', function(obj){
+        var data = obj.data;
+        if(obj.event === 'del'){
+          layer.confirm('真的要删除么?', function(index){
+              $.post('/express/delete',{id:data.id},function (data) {
+                  obj.del();
+                  layer.msg('删除成功！');
+                  layer.close(index);
+              })
+            // obj.del();
+            // layer.close(index);
+          });
+        } else if(obj.event === 'edit'){
+          layer.alert('编辑行：<br>'+ JSON.stringify(data))
+        }
+      });
 
-  var $ = layui.$, active = {
-    getCheckData: function(){ //获取选中数据
-      var checkStatus = table.checkStatus('idTest')
-      ,data = checkStatus.data;
-      layer.alert(JSON.stringify(data));
-    }
-    ,getCheckLength: function(){ //获取选中数目
-      var checkStatus = table.checkStatus('idTest')
-      ,data = checkStatus.data;
-      layer.msg('选中了：'+ data.length + ' 个');
-    }
-    ,isAll: function(){ //验证是否全选
-      var checkStatus = table.checkStatus('idTest');
-      layer.msg(checkStatus.isAll ? '全选': '未全选')
-    }
-  };
+      var $ = layui.$, active = {
+        getCheckData: function(){ //获取选中数据
+          var checkStatus = table.checkStatus('idTest')
+          ,data = checkStatus.data;
+          layer.alert(JSON.stringify(data));
+        }
+        ,getCheckLength: function(){ //获取选中数目
+          var checkStatus = table.checkStatus('idTest')
+          ,data = checkStatus.data;
+          layer.msg('选中了：'+ data.length + ' 个');
+        }
+        ,isAll: function(){ //验证是否全选
+          var checkStatus = table.checkStatus('idTest');
+          layer.msg(checkStatus.isAll ? '全选': '未全选')
+        }
+      };
 
-  $('.demoTable .layui-btn').on('click', function(){
-    var type = $(this).data('type');
-    active[type] ? active[type].call(this) : '';
-  });
-});
+      $('.demoTable .layui-btn').on('click', function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+      });
+    });
 
 </script>
 </body>
