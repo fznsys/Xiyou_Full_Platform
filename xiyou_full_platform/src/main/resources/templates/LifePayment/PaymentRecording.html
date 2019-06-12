@@ -82,14 +82,13 @@
                     </a>
                     <ul class="sub-menu" style="display:none">
                         <li>
-                            <a href="./paymentrecording">
+                            <a href="./paymentrecording.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 缴费记录
                             </a>
                         </li>
                     </ul>
                 </li>
-
                 </li>
             </ul>
         </div>
@@ -102,7 +101,8 @@
             <fieldset class="layui-elem-field layui-field-title site-title">
                 <legend><a name="default">信息统计</a></legend>
             </fieldset>
-            <table class="layui-hide" id="test">
+
+            <table class="layui-hide" style="width: 100%" id="test">
             </table>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
@@ -133,27 +133,12 @@
         table.render({
             elem: '#test'
             ,url:'/getlifetest'
-            ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
             ,width:"100%"
             ,cols: [
                 [
                     {field:'userid',title:"用户ID",align:"center"}
-                    ,{field:'type',title:"缴费类型",align:"center",template:function (t) {
-                        if(t.type=='0')
-                        {
-                            return "未缴费";
-                        }
-                        else if(t.type=='1')
-                        {
-                            return "缴费成功";
-                        }
-                        else if(t.type=='2')
-                        {
-                            return "缴费中";
-                        }
-                        else return "???";
-                    }}
+                    ,{field:'type',title:"缴费类型",align:"center"}
                     ,{field:'num',title:"缴费金额",align:"center"}
                     ,{field:'date',title:"缴费时间",align:"center"}
                     ,{field:'status',title:"缴费状态",align:"center"}
@@ -161,7 +146,7 @@
                 ]
             ],
             done: function (res, curr, count) {
-                $("[data-field='type']").children().each(function(){
+                $("[data-field='status']").children().each(function(){
                     if($(this).text()=='0'){
                         $(this).text("未缴费");
                     }else if($(this).text()=='1'){
