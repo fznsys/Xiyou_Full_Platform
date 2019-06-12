@@ -22,7 +22,7 @@ public interface FoodMapper {
     ArrayList<Food> delete(String id);
 
     @Select(" SELECT * FROM tb_takeout_food where id=#{id}")
-    Food selectByFoodId(String id);
+    ArrayList<Food> selectByFoodId(String id);
 
 
 }

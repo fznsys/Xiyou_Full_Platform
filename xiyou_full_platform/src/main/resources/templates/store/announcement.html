@@ -5,13 +5,13 @@
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../../static/X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../../../static/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../static/X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
@@ -38,10 +38,16 @@
     <div class="left-nav">
         <div id="side-nav">
             <ul id="nav">
-                <li class="list open">
+                <li class="list">
                     <a href="index.html">
                         <i class="layui-icon">&#xe609;</i>
                         商家信息
+                    </a>
+                </li>
+                <li class="list open">
+                    <a href="announcement.html">
+                        <i class="layui-icon">&#xe609;</i>
+                        公告信息
                     </a>
                 </li>
                 <li class="list">
@@ -83,10 +89,35 @@
 
             <xblock>
                 <fieldset class="layui-elem-field layui-field-title site-title">
-                    <legend><a name="default">商家信息修改</a></legend>
+                    <legend><a name="default">商家公告管理</a></legend>
                 </fieldset>
             </xblock>
+            <xblock>
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: initial;color: #01AAED">当前公告</legend>
+                    <div class="layui-field-box">
+                        拉拉拉拉啊啦啦啦啦啦啦啦拉拉
+                    </div>
+                </fieldset>
+            </xblock>
+            <xblock>
+                <form class="layui-form" action="" method="post" id="goods_form">
+                    <div class="layui-form-item">
+                        <label for="name" class="layui-form-label">
+                            <span class="x-red">*</span>公告内容
+                        </label>
+                        <div class="layui-input-inline">
+                            <textarea id="name" style="width: 500px;height: 200px" name="name" required="" lay-verify="name"  class="layui-input"></textarea>
+                        </div>
+                    </div><br>
 
+                    <div class="layui-form-item" style="padding-left: 12%">
+                        <button class="layui-btn" lay-filter="add" lay-submit="" id="sub">
+                            修改公告
+                        </button>
+                    </div>
+                </form>
+            </xblock>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
     </div>

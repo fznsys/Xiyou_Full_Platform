@@ -19,8 +19,8 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public List<Merchant> insertMerchant(Merchant merchant) {
-        return merchantMapper.insert(merchant);
+    public void insertMerchant(Merchant merchant) {
+      merchantMapper.insert(merchant.getAnnouncement(),merchant.getName(),merchant.getMenuid(),merchant.getType(),merchant.getId());
     }
 
     @Override

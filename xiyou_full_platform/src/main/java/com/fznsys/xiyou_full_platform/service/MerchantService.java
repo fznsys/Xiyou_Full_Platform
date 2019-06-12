@@ -10,7 +10,7 @@ import java.util.List;
 public interface MerchantService {
     ArrayList<Merchant> getlistAll();
 
-    List<Merchant> insertMerchant(Merchant merchant);
+    void insertMerchant(Merchant merchant);
 
     void deleteMerchant(String id);
 

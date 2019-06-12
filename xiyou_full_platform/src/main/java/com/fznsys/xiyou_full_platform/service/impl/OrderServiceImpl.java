@@ -28,13 +28,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
 
-    public List<Order> insertorder(Order order) {
-        return orderMapper.insert(order);
+    public void insertorder(String name) {
+         orderMapper.insert(name);
     }
 
     @Override
-    public List<Order> insertorder(OrderFood orderfood) {
-        return null;
+    public void insertorder(OrderFood orderfood) {
+
+
     }
 
     @Override

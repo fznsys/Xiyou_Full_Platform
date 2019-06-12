@@ -28,7 +28,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="./login.html">退出</a></dd>
+                <dd><a href="../index.html">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item"><a href="/">前台首页</a></li>
@@ -250,7 +250,7 @@
                 </thead>
             </table>
             <script type="text/html" id="barDemo">
-                <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
+                <a title="编辑" href="javascript:;" lay-event="edit"
                    class="ml-5" style="text-decoration:none">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
@@ -313,11 +313,12 @@
         //监听工具条
         table.on('tool(demo)', function (obj) {
             var data = obj.data;
+            var  id=data.id;
             if (obj.event === 'detail') {
                 layer.msg('ID：' + data.id + ' 的查看操作');
             } else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
-                    var  id=data.id;
+
                     $.ajax({
                         type: "post",
                         url: "/deleteUser?id="+id,
@@ -330,7 +331,10 @@
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
+alert(id);
+
+                x_admin_show(title, url, w, h);
+
             }
         });
 
@@ -370,6 +374,7 @@
 
     // 用户-编辑
     function member_edit(title, url, id, w, h) {
+        alert(id);
         x_admin_show(title, url, w, h);
     }
 

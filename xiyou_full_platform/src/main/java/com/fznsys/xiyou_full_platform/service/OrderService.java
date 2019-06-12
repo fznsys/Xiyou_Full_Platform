@@ -12,9 +12,9 @@ import java.util.List;
 public interface OrderService {
     ArrayList<Order> getlistAll();
 
-    List<Order> insertorder(Order order);
+    void insertorder(String name);
 
-    List<Order> insertorder(OrderFood orderfood);
+    void insertorder(OrderFood orderfood);
 
     List<Order> deleteorder(String id);
 
