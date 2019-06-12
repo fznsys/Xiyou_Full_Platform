@@ -13,7 +13,7 @@ public class testController {
     @RequestMapping("/index")
     public String index()
     {
-        return "index";
+        return "login";
     }
     @RequestMapping("/test")
     public String test()
