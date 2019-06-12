@@ -36,7 +36,7 @@ public class ExpressController {
 
 
     @RequestMapping("/findAll")
-    public ResponseEntity findAll(){
+    public JSONObject findAll(){
 
         ArrayList<Express> expressArrayList = expressService.findAll();
 
@@ -48,10 +48,8 @@ public class ExpressController {
 
             expressVOArrayList.add(expressVO);
         }
-        JSONObject jsonObject = LayuiJSON.layuiJSON(expressVOArrayList);
-        return ResponseEntity.ok(jsonObject);
 
-
+        return LayuiJSON.layuiJSON(expressVOArrayList);
     }
 
     @RequestMapping("/insert")
@@ -70,5 +68,14 @@ public class ExpressController {
     public ResponseEntity deleteExpress(@RequestParam("id") String id){
         expressService.deleteExpress(id);
         return ResponseEntity.ok(0);
+    }
+
+    @RequestMapping("/findByName")
+    public JSONObject findByName(String name){
+        Express express = expressService.findByName(name);
+        ExpressVO expressVO=new ExpressVO();
+        BeanUtils.copyProperties(express,expressVO);
+        return LayuiJSON.layuiJSON(expressVO);
+
     }
 }

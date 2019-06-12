@@ -25,7 +25,7 @@ public class Express {
     /**快递员id*/
     private String courierid;
     /**快递员姓名*/
-    private String couriername;
+    private String couriername="暂无";
     /**价格*/
     private String price;
     /**快递状态*/

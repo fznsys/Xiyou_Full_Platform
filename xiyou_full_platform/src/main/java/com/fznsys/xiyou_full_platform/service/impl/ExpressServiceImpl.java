@@ -54,4 +54,9 @@ public class ExpressServiceImpl implements ExpressService {
     public void deleteExpress(String id) {
         expressMapper.deleteExpress(id);
     }
+
+    @Override
+    public Express findByName(String name) {
+        return expressMapper.findByName(name);
+    }
 }
