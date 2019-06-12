@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/X-admin/css/font.css">
     <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
     <script src="/layui/layui.js" charset="utf-8"></script>
@@ -23,7 +22,7 @@
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">name</a>
+            <a href="javascript:;" id="name">name</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
@@ -48,25 +47,31 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="member-list.html">
+                            <a href="./PayForCard.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                一卡通充值
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./payforelectricity.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 电费
                             </a>
                         </li>
                         <li>
-                            <a href="member-del.html">
+                            <a href="./PayForWater.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 水费
                             </a>
                         </li>
                         <li>
-                            <a href="member-level.html">
+                            <a href="./PayForPhone.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 话费
                             </a>
                         </li>
                         <li>
-                            <a href="member-kiss.html">
+                            <a href="./PayForInternet.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 网费
                             </a>
@@ -134,15 +139,16 @@
             elem: '#test'
             ,url:'/getlifetest'
             ,title: '用户数据表'
-            ,width:"100%"
+            // ,width:"100%"
             ,cols: [
                 [
-                    {field:'userid',title:"用户ID",align:"center"}
-                    ,{field:'type',title:"缴费类型",align:"center"}
-                    ,{field:'num',title:"缴费金额",align:"center"}
-                    ,{field:'date',title:"缴费时间",align:"center"}
-                    ,{field:'status',title:"缴费状态",align:"center"}
-                    ,{field:'mark',title:"备注",align:"center"}
+                    {field:'userid',title:"用户名称",width:60,align:"center"}
+                    ,{field:'type',title:"缴费类型",width:60,align:"center"}
+                    ,{field:'num',title:"缴费金额",width:60,align:"center"}
+                    ,{field:'date',title:"缴费时间",width:150,align:"center"}
+                    ,{field:'status',title:"缴费状态",width:60,align:"center"}
+                    ,{field:'way',title:"缴费方式",width:60,align:"center"}
+                    ,{field:'mark',title:"备注",width:100,align:"center"}
                 ]
             ],
             done: function (res, curr, count) {
@@ -156,9 +162,50 @@
                         $(this).text("未缴费");
                     };
                 });
+
+                $("[data-field='type']").children().each(function(){
+                    if($(this).text()=='0'){
+                        $(this).text("电费");
+                    }else if($(this).text()=='1'){
+                        $(this).text("水费");
+                    }
+                    else if($(this).text()=='2'){
+                        $(this).text("话费");
+                    }
+                    else if($(this).text()=='3'){
+                        $(this).text("话费");
+                    };
+                });
             }
         });
     });
+    $(function () {
+        $.ajax({
+            type: "post",
+            url: "/getname",
+            data: "",
+            dataType: 'text',
+            success: function (data) {
+                if(data!="")
+                {
+                    $("#name").html(data);
+                }
+                else
+                {
+                    alert("获取用户信息失败请重新登录");
+                    window.location.href="/index";
+                }
+            },
+            error: function () {
+                $("#name").html("获取用户名称失败");
+                alert("获取用户信息失败请重新登录");
+                window.location.href="/index";
+            }
+        })
+    });
+    function getname(){
+
+    }
 </script>
 </body>
 </html>

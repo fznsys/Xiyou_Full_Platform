@@ -41,8 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @CachePut(key = "#user.id")
-
+//    @CachePut(key = "#user.id")
     public User update(User user) {
         System.err.println("执行这里，更新数据库，更新缓存....");
         userMapper.update(user);
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @CacheEvict(key = "#id")
+//    @CacheEvict(key = "#id")
     public String delete(String id) {
         System.err.println("执行这里，删除数据，更新缓存....");
 

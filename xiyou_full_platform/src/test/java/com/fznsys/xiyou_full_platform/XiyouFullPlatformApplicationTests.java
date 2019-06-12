@@ -1,6 +1,7 @@
 package com.fznsys.xiyou_full_platform;
 
 import com.fznsys.xiyou_full_platform.mapper.LifePaymentMapper;
+import com.fznsys.xiyou_full_platform.mapper.UserMapper;
 import com.fznsys.xiyou_full_platform.pojo.LifePayment;
 import com.fznsys.xiyou_full_platform.service.UserService;
 import org.junit.Test;
@@ -19,9 +20,11 @@ import java.util.UUID;
 public class XiyouFullPlatformApplicationTests {
     @Autowired
     UserService userService;
+    @Autowired
+    UserMapper mapper;
     @Test
     public void contextLoads() {
-        userService.getUserById("11");
+//        System.out.println(mapper.LoginByUsernameAndPassword("test","a123456")==null);
 
 //        lifePaymentMapper.addPayment(UUID.randomUUID().toString(),"11","0",
 //                "12.12",DateFormat.getDateTimeInstance().format(new Date()),"0","");

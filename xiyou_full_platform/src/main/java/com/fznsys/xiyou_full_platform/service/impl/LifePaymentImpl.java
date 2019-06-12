@@ -21,16 +21,19 @@ public class LifePaymentImpl implements LifePaymentService {
     @Autowired
     private LifePaymentMapper lifePaymentMapper;
     @Override
-    public boolean addLifePayment(String userid,String type,String num,String mark) {
+    public String addLifePayment(String userid,String type,String num,String way,String mark) {
         LifePayment lifePayment=new LifePayment();
-        lifePayment.setId(UUID.randomUUID().toString());
+        String id=UUID.randomUUID().toString();
+        lifePayment.setId(id);
         lifePayment.setUserid(userid);
         lifePayment.setType(type);
         lifePayment.setNum(num);
         lifePayment.setDate(DateFormat.getDateTimeInstance().format(new Date()));
         lifePayment.setMark(mark);
-        if(lifePaymentMapper.addPayment(lifePayment)>0)return true;
-        return false;
+        lifePayment.setWay(way);
+        lifePayment.setStatus("0");
+        if(lifePaymentMapper.addPayment(lifePayment)>0)return id;
+        return null;
     }
 
     @Override
@@ -56,6 +59,6 @@ public class LifePaymentImpl implements LifePaymentService {
 
     @Override
     public LifePayment getLifePaymentById(String id) {
-        return null;
+        return lifePaymentMapper.getLifePaymentByid(id);
     }
 }

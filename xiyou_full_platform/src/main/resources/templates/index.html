@@ -78,21 +78,18 @@
             success: function (data) {
                 var role=data.role;
                 if(role=="2") {
-                    window.location.href = "success.html";
+                    window.location.href = "userindex.html";
                 }else if(role=="1"){
                     window.location.href="";
                 }else if(role=="0"){
-                    window.location.href="admin/index.html";s
+                    window.location.href="admin/index.html";
                 }
 
 
             },
             error: function () {
-                window.location.href="index.html";
+                alert("登录失败");
             }
-
-
-
         })}
 </script>
 </html>

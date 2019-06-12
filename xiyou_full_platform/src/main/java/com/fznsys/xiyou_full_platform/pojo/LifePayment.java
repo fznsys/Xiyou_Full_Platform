@@ -21,5 +21,7 @@ public class LifePayment {
 
     private String status;//缴费单状态
 
+    private String way;
+
     private String mark;//备注
 }

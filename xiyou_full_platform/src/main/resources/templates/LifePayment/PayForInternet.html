@@ -105,7 +105,35 @@
     <div class="page-content">
         <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
-
+            <div class="login-box">
+                <form class="layui-form layui-form-pane" >
+                    <h3>缴纳网费</h3>
+                    <label class="login-title" for="num">缴费金额</label>
+                    <div class="layui-form-item">
+                        <label class="login-form layui-form-label " style="width: 50px"><i class="layui-icon layui-icon-rmb"></i></label>
+                        <div class="layui-input-inline login-inline">
+                            <input type="text" name="num" id="num" lay-verify="required" placeholder="请输入缴费金额" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <label class="login-title" for="way">缴费方式</label>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label login-form" style="width: 50px"><i class="layui-icon layui-icon-cart"></i></label>
+                        <div class="layui-input-inline login-inline" id="way">
+                            <select>
+                                <option>支付宝</option>
+                                <option>微信支付</option>
+                                <option>银联</option>
+                                <option>Visa</option>
+                                <option>Paypal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input type="button" class="btn btn-warning pull-right" onclick='paysubmit()' value="缴费"/>
+                        <div class="forgot"><a href="member-password.html" class="forgot"></a></div>
+                    </div>
+                </form>
+            </div>
 
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
@@ -143,6 +171,23 @@
 
 </body>
 <script>
+    function paysubmit(){
+        var pay ={};
+        pay.num=$("#num").val();
+        pay.way=$("#way").children().val();
+
+        $.ajax({
+            type: "post",
+            url: "/payforinterneta",
+            data: (pay),
+            dataType: "text",
+            success: function (data) {
+                window.location.href="./paymentresult.html"
+            },
+            error: function () {
+                alert("error");
+            }
+        })}
     $(function () {
         $.ajax({
             type: "post",
