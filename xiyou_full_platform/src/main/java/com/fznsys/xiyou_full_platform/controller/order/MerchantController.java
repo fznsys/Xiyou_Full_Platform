@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class MerchantController {
@@ -17,18 +18,22 @@ public class MerchantController {
     MerchantService merchantService;
 
     @RequestMapping("/getmerchantlist")
-
     public JSONObject getlist(){
         return LayuiJSON.layuiJSON(merchantService.getlistAll());
     }
+
     @RequestMapping("/getmerchantById")
     public  Merchant getlist(String id){
         return merchantService.getMerchantById(id);
     }
 
     @RequestMapping("/insertmerchant")
-    public List<Merchant> insertmerchant(Merchant merchant){
-        return merchantService.insertMerchant(merchant);
+    public String insertmerchant(Merchant merchant){
+        String uuid=UUID.randomUUID().toString();
+        merchant.setId(uuid);
+         merchantService.insertMerchant(merchant);
+        String msg = "成功";
+        return msg;
     }
 
     @RequestMapping("/deletemerchantById")

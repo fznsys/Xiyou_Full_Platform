@@ -1,6 +1,7 @@
 package com.fznsys.xiyou_full_platform.controller.order;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fznsys.xiyou_full_platform.pojo.Food;
 import com.fznsys.xiyou_full_platform.pojo.Order;
 import com.fznsys.xiyou_full_platform.service.OrderService;
 import com.fznsys.xiyou_full_platform.util.LayuiJSON;
@@ -18,8 +19,18 @@ public class OrderController {
 
     @RequestMapping("/getorderlist")
     public JSONObject getlist(){
+        List<Order> orders= orderService.getlistAll();
+        String a=null;
+        for (int i=0;i<orders.size();i++){
 
-        return LayuiJSON.layuiJSON( orderService.getlistAll());
+            a=a+"+"+orders.get(i).getId();
+        }
+        System.out.println(a);
+        JSONObject jsonObject=LayuiJSON.layuiJSON( orderService.getlistAll());
+        //jsonObject.put("data2",a);
+        System.out.println(jsonObject);
+        return jsonObject;
+
 
     }
     @RequestMapping("/getorderById")
@@ -28,8 +39,14 @@ public class OrderController {
     }
 
     @RequestMapping("/insertorder")
-    public List<Order> insertorder(Order order){
-        return orderService.insertorder(order);
+    public void insertorder(String data){
+    String a[]=data.split("-");
+    for (int i=0;i<a.length;i++){
+        System.out.println(a[i]);
+        orderService.insertorder(a[i]);
+    }
+
+
     }
     @RequestMapping("/deleteorderById")
     public List<Order> deleteorder(String id){

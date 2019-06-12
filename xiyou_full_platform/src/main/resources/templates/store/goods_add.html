@@ -5,13 +5,13 @@
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="../../../static/X-admin/css/font.css">
-    <link rel="stylesheet" href="../../../static/X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="../../../static/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="../../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../static/X-admin/js/xadmin.js"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
@@ -42,6 +42,12 @@
                     <a href="index.html">
                         <i class="layui-icon">&#xe609;</i>
                         商家信息
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="announcement.html">
+                        <i class="layui-icon">&#xe609;</i>
+                        公告信息
                     </a>
                 </li>
                 <li class="list">
@@ -101,12 +107,11 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="desc" class="layui-form-label">
+                        <label for="info" class="layui-form-label">
                             <span class="x-red">*</span>商品描述
                         </label>
                         <div class="layui-input-inline">
-                            <input type="textarea" id="desc" name="desc" required="" lay-verify="desc"
-                                   autocomplete="off" class="layui-input">
+                            <textarea id="info" style="width: 400px;height: 150px" name="info" required="" lay-verify="info"  class="layui-input"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">

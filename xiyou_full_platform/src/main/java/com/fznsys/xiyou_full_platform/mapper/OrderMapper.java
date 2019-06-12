@@ -17,8 +17,8 @@ public interface OrderMapper  {
     @Select(" SELECT * FROM tb_takeout_order")
     ArrayList<Order> findAll();
 
-    @Insert(" insert into tb_takeout_order  values (#{order})")
-    ArrayList<Order> insert(Order order);
+    @Insert(" insert into tb_takeout_order (id) values (#{name})")
+    void insert(String name);
 
    @Delete("delete from tb_takeout_order where id=#{id}")
     ArrayList<Order> delete(String id);

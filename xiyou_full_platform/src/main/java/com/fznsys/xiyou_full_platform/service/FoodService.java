@@ -15,5 +15,7 @@ public interface FoodService {
 
     List<Food> deletefood(String id);
 
-    Food getFoodById(String id);
+    List<Food> getFoodById(String id);
+
+    List getFoodIdById(String id);
 }
