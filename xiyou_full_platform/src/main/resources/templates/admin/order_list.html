@@ -225,11 +225,13 @@
                     <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
                     <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
                     <button class="layui-btn" data-type="isAll">验证是否全选</button>
-                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
+                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除
+                    </button>
                     <span class="x-right" style="line-height:40px">共有数据：88 条</span>
                 </div>
             </xblock>
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
+            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}"
+                   lay-filter="demo">
                 <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
@@ -239,7 +241,7 @@
                     <th lay-data="{field: 'date', width: 150, edit: 'text'e}">下单时间</th>
                     <th lay-data="{field: 'num', width: 100}">金额</th>
                     <th lay-data="{field: 'mark'}">备注</th>
-                    <th lay-data="{width:350, align:'center'}">状态</th>
+                    <th lay-data="{width:350, align:'center'， edit: 'text'}">状态</th>
                 </tr>
                 </thead>
             </table>
@@ -317,6 +319,13 @@
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });
+    });
+    table.on('edit(demo)', function (obj) { //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+        console.log(obj.value); //得到修改后的值
+        console.log(obj.field); //当前编辑的字段名
+        console.log(obj.data); //所在行的所有相关数据
+        //这里写数据库更新操作
+
     });
 
     //批量删除提交

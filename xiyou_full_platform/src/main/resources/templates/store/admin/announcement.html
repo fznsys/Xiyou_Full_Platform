@@ -44,7 +44,7 @@
                         商家信息
                     </a>
                 </li>
-                <li class="list">
+                <li class="list open">
                     <a href="announcement.html">
                         <i class="layui-icon">&#xe609;</i>
                         公告信息
@@ -56,13 +56,13 @@
                         修改信息
                     </a>
                 </li>
-                <li class="list open">
+                <li class="list">
                     <a href="javascript:;">
                         <i class="iconfont">&#xe70b;</i>
                         商品管理
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                    <ul class="sub-menu" style="display: block">
+                    <ul class="sub-menu" style="display: none">
                         <li>
                             <a href="goods_list.html">
                                 <i class="iconfont">&#xe6a7;</i>
@@ -89,11 +89,35 @@
 
             <xblock>
                 <fieldset class="layui-elem-field layui-field-title site-title">
-                    <legend><a name="default">商品列表</a></legend>
+                    <legend><a name="default">商家公告管理</a></legend>
                 </fieldset>
             </xblock>
-            <table class="layui-table" id="goods_list">
-            </table>
+            <xblock>
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: initial;color: #01AAED">当前公告</legend>
+                    <div class="layui-field-box">
+                        拉拉拉拉啊啦啦啦啦啦啦啦拉拉
+                    </div>
+                </fieldset>
+            </xblock>
+            <xblock>
+                <form class="layui-form" action="" method="post" id="goods_form">
+                    <div class="layui-form-item">
+                        <label for="name" class="layui-form-label">
+                            <span class="x-red">*</span>公告内容
+                        </label>
+                        <div class="layui-input-inline">
+                            <textarea id="name" style="width: 500px;height: 200px" name="name" required="" lay-verify="name"  class="layui-input"></textarea>
+                        </div>
+                    </div><br>
+
+                    <div class="layui-form-item" style="padding-left: 12%">
+                        <button class="layui-btn" lay-filter="add" lay-submit="" id="sub">
+                            修改公告
+                        </button>
+                    </div>
+                </form>
+            </xblock>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
     </div>
@@ -107,23 +131,7 @@
 <!-- 底部结束 -->
 
 <script>
-    layui.use('table', function () {
-        var table = layui.table;
-        table.render({
-            elem: '#goods_list'
-            , url: '/'
-            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , cols: [[
-                {field: 'id', width: 80, title: 'ID', sort: true}
-                , {field: 'name', width: 120, title: '商品名'}
-                , {field: 'desc', width: 300, title: '描述'}
-                , {field: 'off', width: 80, title: '是否优惠'}
-                , {field: 'price', title: '原价', width: 120, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , {field: 'offprice', title: '优惠价', width: 120}
-                , {field: 'status', title: '状态', sort: true}
-            ]]
-        });
-    });
+
 
 </script>
 </body>

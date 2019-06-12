@@ -231,7 +231,8 @@
                 </div>
             </xblock>
 
-            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
+            <table class="layui-table" lay-data="{width: 100%, url:'/demo/table/user/', page:true, id:'idTest'}"
+                   lay-filter="demo">
                 <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
@@ -239,7 +240,7 @@
                     <th lay-data="{field:'storename', width:250}">商户名字</th>
                     <th lay-data="{field:'storetype', width:150}">类型</th>
                     <th lay-data="{field:'storeman', width:200}">责任人</th>
-                    <th lay-data="{field:'status', width:100}">状态</th>
+                    <th lay-data="{field:'status',edit: 'text', width:100}">状态</th>
                     <th lay-data="{ width:350, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
                 </thead>
@@ -325,6 +326,14 @@
         $('.demoTable .layui-btn').on('click', function () {
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
+        });
+
+        table.on('edit(demo)', function (obj) { //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+            console.log(obj.value); //得到修改后的值
+            console.log(obj.field); //当前编辑的字段名
+            console.log(obj.data); //所在行的所有相关数据
+            //这里写数据库更新操作
+
         });
     });
 

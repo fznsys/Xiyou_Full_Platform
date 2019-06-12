@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>餐饮商家列表</title>
+    <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="../../static/X-admin/css/font.css">
@@ -17,7 +17,7 @@
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="index.html">餐饮商家列表</a></div>
+    <div class="logo"><a href="../index.html">商家-点餐</a></div>
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
@@ -25,7 +25,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="">退出</a></dd>
+                <dd><a href="../login.html">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item"><a href="/">首页</a></li>
@@ -41,10 +41,17 @@
     <div class="page-content">
         <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
+            <xblock>
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                <legend><a name="default">商家公告</a></legend>
+                </fieldset>
+                <blockquote class="layui-elem-quote">
+                本店对你永远不打烊，你来就是我们最大的幸运
+            </blockquote>
+            </xblock>
 
             <xblock>
-                <table class="layui-table" id="store_list">
-                </table>
+                <table class="layui-hide" id="order"></table>
             </xblock>
 
             <!-- 右侧内容框架，更改从这里结束 -->
@@ -57,33 +64,24 @@
 
 <!-- 底部结束 -->
 
-<script type="text/html" id="barDemo">
-    <a title="编辑" href="javascript:;" onclick="goto()"
-       class="ml-5" style="text-decoration:none">
-        <i class="layui-icon">&#xe609; 去点餐</i>
-    </a>
-</script>
-
 <script>
-    layui.use('table', function () {
-        var table = layui.table;
-        table.render({
-            elem: '#store_list'
-            , url: '/'
-            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , cols: [[
-                , {field: 'name', width: 150, title: '商家名字'}
-                , {field: 'announcement', width: 300, title: '商家公告信息'}
-                , {field: 'status', width: 100, title: '商家状态'}
-                , {field: 'address', title: ' ', minWidth: 150, align: 'center', toolbar: '#barDemo'}
-            ]]
-        });
-    });
+layui.use('table', function(){
+  var table = layui.table;
 
-    function goto(id) {
-        window.location.href="/store/detail.html?id="+id;
-    }
-
+  table.render({
+    elem: '#order'
+    ,url:''
+    ,cols: [[
+      {type:'checkbox'}
+      ,{field:'name', width:80, title: '菜名'}
+      ,{field:'detail', width:200, title: '简介'}
+      ,{field:'price', width:80, title: '原价'}
+      ,{field:'offprice', width:80, title: '优惠价'}
+      ,{field:'status', width:80, title: '状态'}
+    ]]
+    ,page: true
+  });
+});
 </script>
 </body>
 </html>

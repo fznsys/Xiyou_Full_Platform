@@ -222,14 +222,15 @@
             </form>
             <xblock>
                 <div class="layui-btn-group demoTable">
-                <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
-                <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
-                <button class="layui-btn" data-type="isAll">验证是否全选</button>
-                <span class="x-right" style="line-height:40px">共有数据：88 条</span>
-            </div>
-               </xblock>
+                    <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
+                    <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
+                    <button class="layui-btn" data-type="isAll">验证是否全选</button>
+                    <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+                </div>
+            </xblock>
 
-            <table class="layui-table" lay-data="{width: 1500, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
+            <table class="layui-table" lay-data="{width: 1500, url:'/demo/table/user/', page:true, id:'idTest'}"
+                   lay-filter="demo">
                 <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
@@ -239,7 +240,7 @@
                     <th lay-data="{field:'expressnum', width:130}">快递编号</th>
                     <th lay-data="{field:'phonenumber', width:200}">电话</th>
                     <th lay-data="{field:'address'}">地址</th>
-                    <th lay-data="{field:'status', width:80}">状态</th>
+                    <th lay-data="{field:'status', width:80, edit:'text'}">状态</th>
                     <th lay-data="{field:'courier', width:120}">快递员</th>
                     <th lay-data="{ width:200, align:'center', toolbar: '#barDemo'}">操作</th>
                 </tr>
@@ -264,47 +265,54 @@
 
 <!-- 页面动态效果 -->
 <script>
-layui.use('table', function(){
-  var table = layui.table;
-  //监听表格复选框选择
-  table.on('checkbox(demo)', function(obj){
-    console.log(obj)
-  });
-  //监听工具条
-  table.on('tool(demo)', function(obj){
-    var data = obj.data;
-    if(obj.event === 'del'){
-      layer.confirm('真的删除行么', function(index){
-        obj.del();
-        layer.close(index);
-      });
-    } else if(obj.event === 'edit'){
-      layer.alert('编辑行：<br>'+ JSON.stringify(data))
-    }
-  });
+    layui.use('table', function () {
+        var table = layui.table;
+        //监听表格复选框选择
+        table.on('checkbox(demo)', function (obj) {
+            console.log(obj)
+        });
+        //监听工具条
+        table.on('tool(demo)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
+            }
+        });
 
-  var $ = layui.$, active = {
-    getCheckData: function(){ //获取选中数据
-      var checkStatus = table.checkStatus('idTest')
-      ,data = checkStatus.data;
-      layer.alert(JSON.stringify(data));
-    }
-    ,getCheckLength: function(){ //获取选中数目
-      var checkStatus = table.checkStatus('idTest')
-      ,data = checkStatus.data;
-      layer.msg('选中了：'+ data.length + ' 个');
-    }
-    ,isAll: function(){ //验证是否全选
-      var checkStatus = table.checkStatus('idTest');
-      layer.msg(checkStatus.isAll ? '全选': '未全选')
-    }
-  };
+        table.on('edit(demo)', function (obj) { //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+            console.log(obj.value); //得到修改后的值
+            console.log(obj.field); //当前编辑的字段名
+            console.log(obj.data); //所在行的所有相关数据
+            //更新数据库操作在这下面写
+        });
 
-  $('.demoTable .layui-btn').on('click', function(){
-    var type = $(this).data('type');
-    active[type] ? active[type].call(this) : '';
-  });
-});
+        var $ = layui.$, active = {
+            getCheckData: function () { //获取选中数据
+                var checkStatus = table.checkStatus('idTest')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+            , getCheckLength: function () { //获取选中数目
+                var checkStatus = table.checkStatus('idTest')
+                    , data = checkStatus.data;
+                layer.msg('选中了：' + data.length + ' 个');
+            }
+            , isAll: function () { //验证是否全选
+                var checkStatus = table.checkStatus('idTest');
+                layer.msg(checkStatus.isAll ? '全选' : '未全选')
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
 
 </script>
 </body>
