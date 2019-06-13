@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>快递代取</title>
+    <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/X-admin/css/font.css">
-    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/X-admin/css/font.css">
+    <link rel="stylesheet" href="../../static/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../static/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="/X-admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
+    <script src="../../static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="/index">快递代取</a></div>
+    <div class="logo"><a href="../index.html">XFP—西邮服务平台后台</a></div>
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
@@ -25,10 +25,10 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="/loginout.html">退出登录</a></dd>
+                <dd><a href="../login.html">退出</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item"><a href="/index">返回首页</a></li>
+        <li class="layui-nav-item"><a href="/">前台首页</a></li>
     </ul>
 </div>
 <!-- 顶部结束 -->
@@ -40,20 +40,20 @@
             <ul id="nav">
                 <li class="list">
                     <a href="index.html">
-                        <i class="iconfont">&#xe70b;</i>
-                        校园快递
+                        <i class="layui-icon">&#xe609;</i>
+                        个人信息
                     </a>
                 </li>
                 <li class="list">
-                    <a href="my_express.html">
-                        <i class="iconfont">&#xe70b;</i>
-                        我的快递
+                    <a href="modify.html">
+                        <i class="layui-icon">&#xe60a;</i>
+                        修改信息
                     </a>
                 </li>
                 <li class="list">
-                    <a href="express-add.html">
-                        <i class="iconfont">&#xe70b;</i>
-                        代取快递
+                    <a href="repass.html">
+                        <i class="layui-icon">&#xe66c;</i>
+                        修改密码
                     </a>
                 </li>
             </ul>
@@ -64,73 +64,76 @@
     <div class="page-content">
         <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
+
             <xblock>
                 <fieldset class="layui-elem-field layui-field-title site-title">
-                    <legend><a name="default">校园快递代取</a></legend>
+                    <legend><a name="default">修改信息</a></legend>
                 </fieldset>
             </xblock>
+
             <xblock>
-            <form class="layui-form"  >
-                <div class="layui-form-item">
-                    <label for="name" class="layui-form-label">
-                        <span class="x-red">*</span>姓名
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="name" name="name" required="" lay-verify="name"
-                               autocomplete="off" class="layui-input">
-                    </div>
-                </div>
+                <form class="layui-form" action="" id="member_form" method="post">
                     <div class="layui-form-item">
-                        <label for="company" class="layui-form-label">
-                            <span class="x-red">*</span>快递公司
+                        <label for="username" class="layui-form-label">
+                            <span class="x-red">*</span>用户名
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="company" name="company" required="" lay-verify="company"
-                                   autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label for="expressnum" class="layui-form-label">
-                            <span class="x-red">*</span>快递编号
-                        </label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="expressnum" name="expressnum" required="" lay-verify="expressnum"
+                            <input type="text" disabled="disabled" id="username" name="username" required="" lay-verify="username"
                                    autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">
-                            您收到的快递编号
+                            <span class="x-red">*</span>用户名不可修改
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="phonenumber" class="layui-form-label">
-                            <span class="x-red">*</span>联系电话
+                        <label for="name" class="layui-form-label">
+                            <span class="x-red">*</span>姓名
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="phonenumber" name="phonenumber" required="" lay-verify="phonenumber"
+                            <input type="text" id="name" name="name" required="" lay-verify="name"
                                    autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">
-                            快递上所填写的联系电话
+                            <span class="x-red">*</span>您的名字
                         </div>
                     </div>
-                <div class="layui-form-item">
-                    <label for="address" class="layui-form-label">
-                        <span class="x-red">*</span>目的地址
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="address" name="address" required="" lay-verify="address"
-                               autocomplete="off" class="layui-input">
+                    <div class="layui-form-item">
+                        <label for="number" class="layui-form-label">
+                            <span class="x-red">*</span>学号
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="number" name="number" required="" lay-verify="number"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            您的学号
+                        </div>
                     </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        快递送达地址
+                    <div class="layui-form-item">
+                        <label for="phone" class="layui-form-label">
+                            <span class="x-red">*</span>手机号
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="phone" name="phone" required="" lay-verify="phone"
+                                   autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <button class="layui-btn" lay-filter="add" onclick="insertExpress()">
-                        增加
-                    </button>
-                </div>
-            </form>
+                    <div class="layui-form-item">
+                        <label for="email" class="layui-form-label">
+                            <span class="x-red">*</span>学号
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="email" name="email" required="" lay-verify="email"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" style="padding-left: 12%">
+                        <button class="layui-btn" lay-filter="add" lay-submit="" id="sub">
+                            修改信息
+                        </button>
+                    </div>
+                </form>
             </xblock>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
@@ -138,6 +141,7 @@
     <!-- 右侧主体结束 -->
 </div>
 <!-- 中部结束 -->
+
 	<div class="bg-changer">
         <div class="swiper-container changer-list">
             <div class="swiper-wrapper">
@@ -158,22 +162,18 @@
         <div class="bg-out"></div>
         <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
     </div>
+<!-- 底部开始 -->
+
+<!-- 底部结束 -->
 
 <script>
-    function insertExpress(){
-        $.post("/express/insert", {
-            name:$("#name").val(),
-            company:$("#company").val(),
-            expressnum:$("#expressnum").val(),
-            phonenumber:$("#phonenumber").val(),
-            address:$('#address').val(),
-            },
-            function(result){
-                alert(result);
-            }
-        );
-    }
 
+    // 表单提交
+    $("#sub").click(function () {
+        $("#member_form").ajaxSubmit(function (data) {
+            alert(data.message)
+        })
+    })
 
 </script>
 </body>
