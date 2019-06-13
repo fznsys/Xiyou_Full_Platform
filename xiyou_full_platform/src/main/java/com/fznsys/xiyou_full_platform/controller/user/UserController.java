@@ -43,6 +43,25 @@ public class UserController {
 //        return null;
     }
 
+    @RequestMapping(value = "/loginout", method = RequestMethod.POST)
+    public String loginout(HttpServletRequest request) {
+        // 调用dao层
+        HttpSession session=request.getSession();
+        if(session.getAttribute("user")!=null)
+        {
+            session.setAttribute("user",null);
+            return "true";
+        }
+        return "false";
+//        System.out.println("前端" + user);
+//        User u = userService.getUser(user.getUsername());
+//        System.out.println("数据库" + u);
+//        if (u.getPassword().equals(user.getPassword())) {
+//            return u;
+//        }
+//        return null;
+    }
+
     @RequestMapping(value = "/getUser")
      public JSONObject getAll() {
         ArrayList userList = userService.getAll();

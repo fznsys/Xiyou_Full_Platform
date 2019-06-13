@@ -13,21 +13,6 @@ public class testController {
     @RequestMapping("/index")
     public String index()
     {
-        return "login";
-    }
-    @RequestMapping("/test")
-    public String test()
-    {
-        return "PaymentIndex";
-    }
-    @RequestMapping("/paymentrecording")
-    public String PaymentRecording()
-    {
-        return "PaymentRecording";
-    }
-    @RequestMapping("/paymentindex")
-    public String PaymentIndex()
-    {
-        return "PaymentIndex";
+        return "index";
     }
 }
