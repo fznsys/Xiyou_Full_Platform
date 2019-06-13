@@ -1,5 +1,6 @@
 package com.fznsys.xiyou_full_platform;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Target:页面测试
  */
 @Controller
+@Ignore
 public class testController {
     @RequestMapping("/index")
     public String index()
