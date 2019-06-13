@@ -120,6 +120,7 @@
                                         <div style="font-size: x-large;text-align: center;margin-bottom: 10px;"><a
                                                 class="mya" href="detail.html">老王家的炸鸡店</a></div>
                                         <p>啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</p>
+                                        <p><a href="#" class="btn btn-default" role="button" style="float: right;">暂停营业</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -199,13 +200,12 @@
                                     +'<a href="detail.html" onclick="goto(\'+json[i].id+\')"> <img src="../../static/image/c.jpg" alt="..."></a>'
                                     +'<div class="caption" style="padding-top: 10px;width: 260px;height: 110px;">'
                                         +'<div style="font-size: x-large;text-align: center;margin-bottom: 10px;">'
-                                        +'<a class="mya" href="detail.html" onclick="goto('+json[i].id+')">老王家的炸鸡店</a></div>'
-                                        +'<p>'+json[i].info+'</p>'
-                                    +'</div>'
-                                +'</div>'
-                            +'</div>'
-                        +'</div>'
-                    +'</div>';
+                                        +'<a class="mya" href="detail.html" onclick="goto('+json[i].id+')">'+json[i].name+'</a></div>'
+                                        +'<p>'+json[i].announcement+'</p>'
+                if (json[i].status == '0'){
+                    s+='<p><a href="#" class="btn btn-default" role="button" style="float: right;">暂停营业</a></p>'
+                }
+                s+='</div>' +'</div>'+'</div>' +'</div>' +'</div>';
             }
             $('#tb').append(s);
         },
