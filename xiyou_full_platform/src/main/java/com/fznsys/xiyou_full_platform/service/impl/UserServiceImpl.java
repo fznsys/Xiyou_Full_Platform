@@ -74,4 +74,14 @@ public class UserServiceImpl implements UserService {
     public User LoginByUsernameAndPassword(String username, String password) {
         return userMapper.LoginByUsernameAndPassword(username, password);
     }
+
+    @Override
+    public void insertAd(String uuid, String name, String username, String password, String role) {
+        userMapper.insertAd(uuid,name,username,password,role);
+    }
+
+    @Override
+    public void updateAd(String name, String username, String password, String role) {
+        userMapper.updateAd(name,username,password,role);
+    }
 }

@@ -121,11 +121,28 @@ public class UserController {
 
     public String insert(User user) {
 
-       String uuid= UUID.randomUUID().toString();
-       user.setId(uuid);
+        String uuid= UUID.randomUUID().toString();
+        user.setId(uuid);
         System.out.println(user);
         userService.insert(user);
         String msg = "成功";
         return msg;
+    }
+    @RequestMapping(value = "/addUser")
+
+    public String insertAd(String name,String username,String password,String role) {
+
+        String uuid= UUID.randomUUID().toString();
+        userService.insertAd(uuid,name,username,password,role);
+        String msg = "成功";
+        return msg;
+    }
+
+    @RequestMapping(value = "/updateAdUser")
+    public void updateAd(String name,String username,String password,String role) {
+
+        userService.updateAd(name,username,password,role);
+
+
     }
 }

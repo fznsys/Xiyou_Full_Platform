@@ -34,4 +34,9 @@ public interface UserMapper {
 
     @Insert("insert into tb_user_user (id,name,username,password,role) values (#{id},#{name},#{username},#{password},#{role})")
     void insert(@Param("id") String id, @Param("name")String name, @Param("username")String username, @Param("password")String password, @Param("role")String role);
+
+    @Insert("insert into tb_user_user (id,name,username,password,role) values (#{uuid},#{name},#{username},#{password},#{role})")
+    void insertAd(@Param("uuid") String uuid, @Param("name") String name, @Param("username") String username, @Param("password") String password, @Param("role") String role);
+    @Update("update tb_user_user set role=#{role}  where username = #{username}")
+    void updateAd(String name, @Param("username") String username, @Param("password") String password, @Param("role") String role);
 }

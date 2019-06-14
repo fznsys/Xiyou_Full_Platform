@@ -21,4 +21,8 @@ public interface UserService {
 
 
     User LoginByUsernameAndPassword(String username,String password);
+
+    void insertAd(String uuid, String name, String username, String password, String role);
+
+    void updateAd(String name, String username, String password, String role);
 }
