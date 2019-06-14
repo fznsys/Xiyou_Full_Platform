@@ -23,11 +23,11 @@
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">name</a>
+            <a href="javascript:;" id="name">name</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="../login.html">退出</a></dd>
+                <dd><a href="/loginout.html">退出登录</a></dd>
             </dl>
         </li>
     </ul>
@@ -48,25 +48,31 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="member-list.html">
+                            <a href="./PayForCard.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                一卡通充值
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./payforelectricity.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 电费
                             </a>
                         </li>
                         <li>
-                            <a href="member-del.html">
+                            <a href="./PayForWater.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 水费
                             </a>
                         </li>
                         <li>
-                            <a href="member-level.html">
+                            <a href="./PayForPhone.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 话费
                             </a>
                         </li>
                         <li>
-                            <a href="member-kiss.html">
+                            <a href="./PayForInternet.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 网费
                             </a>
@@ -82,7 +88,7 @@
                     </a>
                     <ul class="sub-menu" style="display:none">
                         <li>
-                            <a href="./paymentrecording">
+                            <a href="./paymentrecording.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 缴费记录
                             </a>
@@ -90,6 +96,12 @@
                     </ul>
                 </li>
 
+                <li class="list" >
+                    <a href="/index">
+                        <i class="iconfont">&#xe6a3;</i>
+                        返回主页
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -116,17 +128,17 @@
 <div class="bg-changer">
     <div class="swiper-container changer-list">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img class="item" src="./images/a.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/b.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/c.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/d.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/e.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/f.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/g.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/h.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/i.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/j.jpg" alt=""></div>
-            <div class="swiper-slide"><img class="item" src="./images/k.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/a.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/b.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/c.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/d.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/e.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/f.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/g.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/h.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/i.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/j.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/k.jpg" alt=""></div>
             <div class="swiper-slide"><span class="reset">初始化</span></div>
         </div>
     </div>
@@ -136,4 +148,30 @@
 <!-- 背景切换结束 -->
 
 </body>
+<script>
+    $(function () {
+        $.ajax({
+            type: "post",
+            url: "/getname",
+            data: "",
+            dataType: 'text',
+            success: function (data) {
+                if(data!="")
+                {
+                    // $("#name").html(data);
+                }
+                else
+                {
+                    alert("获取用户信息失败请重新登录");
+                    window.location.href="/login.html";
+                }
+            },
+            error: function () {
+                $("#name").html("获取用户名称失败");
+                alert("获取用户信息失败请重新登录");
+                window.location.href="/index";
+            }
+        })
+    });
+</script>
 </html>

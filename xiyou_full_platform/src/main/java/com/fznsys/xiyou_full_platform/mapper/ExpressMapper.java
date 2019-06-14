@@ -39,6 +39,9 @@ public interface ExpressMapper {
     void addExpress(Express express);
 
     /**删除快递单*/
-    @Delete("delete from tb_express_order where id=#{id},reciveid=#{reciveid}")
-    void deleteExpress(@Param("id") String id,@Param("reciveid") String reciveid);
+    @Delete("delete from tb_express_order where id=#{id}")
+    void deleteExpress(@Param("id") String id);
+
+    @Select("select * from tb_express_order where recivename LIKE concat(concat('%',#{name}),'%')")
+    Express findByName(String name);
 }

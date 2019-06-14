@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -23,10 +25,34 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-
-    public User login(User user) {
+    public User login(User user, HttpServletRequest request) {
         // 调用dao层
-        return userService.LoginByUsernameAndPassword(user.getUsername(),user.getPassword());
+        HttpSession session=request.getSession();
+        User us=userService.LoginByUsernameAndPassword(user.getUsername(),user.getPassword());
+        if(us!=null)
+        {
+            session.setAttribute("user",us);
+        }
+        return us;
+//        System.out.println("前端" + user);
+//        User u = userService.getUser(user.getUsername());
+//        System.out.println("数据库" + u);
+//        if (u.getPassword().equals(user.getPassword())) {
+//            return u;
+//        }
+//        return null;
+    }
+
+    @RequestMapping(value = "/loginout", method = RequestMethod.POST)
+    public String loginout(HttpServletRequest request) {
+        // 调用dao层
+        HttpSession session=request.getSession();
+        if(session.getAttribute("user")!=null)
+        {
+            session.setAttribute("user",null);
+            return "true";
+        }
+        return "false";
 //        System.out.println("前端" + user);
 //        User u = userService.getUser(user.getUsername());
 //        System.out.println("数据库" + u);
@@ -47,7 +73,18 @@ public class UserController {
         rootObject.put("date",userList);
         return rootObject;*/
     }
-
+    @RequestMapping(value = "/getname")
+    public String getname(HttpServletRequest request) {
+        if(((User)request.getSession().getAttribute("user"))!=null)
+       return ((User)request.getSession().getAttribute("user")).getName();
+        return null;
+        /*JSONObject rootObject = new JSONObject();
+        rootObject.put("code", 0);
+        rootObject.put("msg", "");
+        rootObject.put("count", 1000);
+        rootObject.put("date",userList);
+        return rootObject;*/
+    }
     @RequestMapping(value = "/getUserById")
 
     public JSONObject getUserById(String id) {
@@ -84,11 +121,28 @@ public class UserController {
 
     public String insert(User user) {
 
-       String uuid= UUID.randomUUID().toString();
-       user.setId(uuid);
+        String uuid= UUID.randomUUID().toString();
+        user.setId(uuid);
         System.out.println(user);
         userService.insert(user);
         String msg = "成功";
         return msg;
+    }
+    @RequestMapping(value = "/addUser")
+
+    public String insertAd(String name,String username,String password,String role) {
+
+        String uuid= UUID.randomUUID().toString();
+        userService.insertAd(uuid,name,username,password,role);
+        String msg = "成功";
+        return msg;
+    }
+
+    @RequestMapping(value = "/updateAdUser")
+    public void updateAd(String name,String username,String password,String role) {
+
+        userService.updateAd(name,username,password,role);
+
+
     }
 }

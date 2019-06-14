@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>xiyou_full_platform</name>
     <description>Demo project for Spring Boot</description>
-
+    <packaging>jar</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -21,11 +21,29 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <!--忽略内嵌tomcat，打包部署到tomcat。注*本地运行的时候要把这一段忽略引入个注释掉，要不然项目启动不了-->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+                <!--忽略日志-->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -101,18 +119,6 @@
             <!--<artifactId>xiyou_full_platform</artifactId>-->
             <!--<version>0.0.1-SNAPSHOT</version>-->
         <!--</dependency>-->
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j</artifactId>

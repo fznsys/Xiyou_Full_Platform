@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Target:
  */
 public interface LifePaymentService {
-    boolean addLifePayment(String userid,String type,String num,String mark) ;//新增缴费单
+    String addLifePayment(String userid,String type,String num,String way,String mark) ;//新增缴费单,返回缴费单ID
 
     boolean updateStatus(String id,String status);//通过缴费单id更新状态
 

@@ -5,19 +5,19 @@
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="/X-admin/css/font.css">
-    <link rel="stylesheet" href="/X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="/static/X-admin/css/font.css">
+    <link rel="stylesheet" href="/static/X-admin/css/xadmin.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
-    <script src="/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
+    <script src="/static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/X-admin/js/xadmin.js"></script>
 
 </head>
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="">XFP—西邮服务平台后台</a></div>
+    <div class="logo"><a href="../index.html">XFP—西邮服务平台后台</a></div>
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
@@ -41,13 +41,7 @@
                 <li class="list">
                     <a href="index.html">
                         <i class="layui-icon">&#xe609;</i>
-                        商家信息
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="announcement.html">
-                        <i class="layui-icon">&#xe609;</i>
-                        公告信息
+                        个人信息
                     </a>
                 </li>
                 <li class="list">
@@ -56,28 +50,12 @@
                         修改信息
                     </a>
                 </li>
-                <li class="list open">
-                    <a href="javascript:;">
-                        <i class="iconfont">&#xe70b;</i>
-                        商品管理
-                        <i class="iconfont nav_right">&#xe697;</i>
+                <li class="list">
+                    <a href="repass.html">
+                        <i class="layui-icon">&#xe66c;</i>
+                        修改密码
                     </a>
-                    <ul class="sub-menu" style="display: block">
-                        <li>
-                            <a href="goods_list.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                商品列表
-                            </a>
-                        </li>
-                        <li>
-                            <a href="goods_add.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                增加商品
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -89,11 +67,47 @@
 
             <xblock>
                 <fieldset class="layui-elem-field layui-field-title site-title">
-                    <legend><a name="default">商品列表</a></legend>
+                    <legend><a name="default">个人信息</a></legend>
                 </fieldset>
             </xblock>
-            <table class="layui-table" id="goods_list">
-            </table>
+
+            <xblock>
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: small;color: #01AAED">用户名</legend>
+                    <div class="layui-field-box">
+                        东北张三
+                    </div>
+                </fieldset>
+
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: small;color: #01AAED">姓&nbsp;&nbsp;&nbsp;名</legend>
+                    <div class="layui-field-box">
+                        张三四
+                    </div>
+                </fieldset>
+
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: small;color: #01AAED">学&nbsp;&nbsp;&nbsp;号</legend>
+                    <div class="layui-field-box">
+                        12345678
+                    </div>
+                </fieldset>
+
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: small;color: #01AAED">手&nbsp;&nbsp;&nbsp;机</legend>
+                    <div class="layui-field-box">
+                        12345678
+                    </div>
+                </fieldset>
+
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size: small;color: #01AAED">邮&nbsp;&nbsp;&nbsp;箱</legend>
+                    <div class="layui-field-box">
+                        12345678
+                    </div>
+                </fieldset>
+
+            </xblock>
             <!-- 右侧内容框架，更改从这里结束 -->
         </div>
     </div>
@@ -121,29 +135,11 @@
     <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
 </div>
 <!-- 底部开始 -->
-<div class="footer">
-    <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved. 本后台系统由X前端框架提供前端技术支持</div>
-</div>
+
 <!-- 底部结束 -->
 
 <script>
-    layui.use('table', function () {
-        var table = layui.table;
-        table.render({
-            elem: '#goods_list'
-            , url: '/'
-            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , cols: [[
-                {field: 'id', width: 80, title: 'ID', sort: true}
-                , {field: 'name', width: 120, title: '商品名'}
-                , {field: 'desc', width: 300, title: '描述'}
-                , {field: 'off', width: 80, title: '是否优惠'}
-                , {field: 'price', title: '原价', width: 120, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , {field: 'offprice', title: '优惠价', width: 120}
-                , {field: 'status', title: '状态', sort: true}
-            ]]
-        });
-    });
+
 
 </script>
 </body>

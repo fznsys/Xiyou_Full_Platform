@@ -22,7 +22,7 @@ public interface LifePaymentMapper {
 //    int addPayment(@Param("id")String id,@Param("userid")String userid,@Param("type")String type,
 //                    @Param("num")String num,@Param("date")String date,@Param("status")String status,
 //                    @Param("mark")String mark);//添加缴费单记录
-@Insert("insert into tb_life_payment values(#{id},#{userid},#{type},#{num},#{date},#{status},#{mark})")
+@Insert("insert into tb_life_payment values(#{id},#{userid},#{type},#{num},#{date},#{status},#{way},#{mark})")
     int addPayment(LifePayment lifePayment);//添加缴费单记录
     @Select("select * from tb_life_payment where id=#{id}")
     LifePayment getLifePaymentByid(@Param("id") String id);//通过缴费单ID获取缴费单

@@ -21,9 +21,6 @@ public class ExpressVO {
     @JsonProperty("expressnum")
     private String expressnum;
 
-    /*@JsonProperty("userid")
-    private String reciveid;*/
-
     @JsonProperty("phonenumber")
     private String phonenumber;
 
@@ -31,11 +28,11 @@ public class ExpressVO {
     private String address;
 
 
-    /*@JsonProperty("courierid")
-    private String courierid;*/
+    @JsonProperty("courierid")
+    private String courierid;
 
-    //@JsonProperty("courier")
-    //private String couriername;
+    @JsonProperty("courier")
+    private String couriername;
 
     @JsonProperty("status")
     private String status;

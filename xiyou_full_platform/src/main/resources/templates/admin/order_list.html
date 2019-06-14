@@ -69,21 +69,33 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="">
+                            <a href="/LifePayment/PayForCard.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                一卡通
+                                一卡通充值
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="/LifePayment/payforelectricity.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                电费
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/LifePayment/PayForWater.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 水费
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="/LifePayment/PayForPhone.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                电费
+                                话费
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/LifePayment/PayForInternet.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                网费
                             </a>
                         </li>
                     </ul>
@@ -117,7 +129,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../admin/order_list.html">
+                            <a href="order_list.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 订单列表
                             </a>
@@ -227,7 +239,8 @@
                     <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
                     <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
                     <button class="layui-btn" data-type="isAll">验证是否全选</button>
-                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
+                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除
+                    </button>
                     <span class="x-right" style="line-height:40px">共有数据：88 条</span>
                 </div>
             </xblock>
@@ -252,6 +265,26 @@
     <!-- 右侧主体结束 -->
 </div>
 <!-- 中部结束 -->
+<div class="bg-changer">
+    <div class="swiper-container changer-list">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/a.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/b.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/c.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/d.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/e.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/f.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/g.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/h.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/i.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/j.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/k.jpg" alt=""></div>
+            <div class="swiper-slide"><span class="reset">初始化</span></div>
+        </div>
+    </div>
+    <div class="bg-out"></div>
+    <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
+</div>
 <!-- 底部开始 -->
 <div class="footer">
     <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved. 本后台系统由X前端框架提供前端技术支持</div>
@@ -320,6 +353,13 @@
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });
+    });
+    table.on('edit(demo)', function (obj) { //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+        console.log(obj.value); //得到修改后的值
+        console.log(obj.field); //当前编辑的字段名
+        console.log(obj.data); //所在行的所有相关数据
+        //这里写数据库更新操作
+
     });
 
     //批量删除提交

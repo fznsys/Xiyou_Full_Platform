@@ -19,5 +19,7 @@ public interface ExpressService {
 
     void addExpress(Express express);
 
-    void deleteExpress(String id,String reciveid);
+    void deleteExpress(String id);
+
+    Express findByName(String name);
 }

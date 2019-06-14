@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后台登录-X-admin1.1</title>
+    <title>快递代取</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/X-admin/css/font.css">
@@ -17,7 +17,7 @@
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="../index.html">XFP—西邮服务平台后台</a></div>
+    <div class="logo"><a href="/index">快递代取</a></div>
     <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
@@ -25,10 +25,10 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="./login.html">退出</a></dd>
+                <dd><a href="/loginout.html">退出登录</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item"><a href="../index.html">返回首页</a></li>
+        <li class="layui-nav-item"><a href="/index">返回首页</a></li>
     </ul>
 </div>
 <!-- 顶部结束 -->
@@ -79,6 +79,7 @@
                         <input type="text" id="name" name="name" required="" lay-verify="name"
                                autocomplete="off" class="layui-input">
                     </div>
+                </div>
                     <div class="layui-form-item">
                         <label for="company" class="layui-form-label">
                             <span class="x-red">*</span>快递公司
@@ -112,27 +113,6 @@
                             快递上所填写的联系电话
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label for="address" class="layui-form-label">
-                            <span class="x-red">*</span>目的地址
-                        </label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="address" name="address" required="" lay-verify="address"
-                                   autocomplete="off" class="layui-input">
-                        </div>
-                        <div class="layui-form-mid layui-word-aux">
-                            快递送达地址
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <button class="layui-btn" lay-filter="add" lay-submit="" id="sub">
-                            增加
-                        </button>
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        快递上所填写的联系电话
-                    </div>
-                </div>
                 <div class="layui-form-item">
                     <label for="address" class="layui-form-label">
                         <span class="x-red">*</span>目的地址
@@ -158,6 +138,26 @@
     <!-- 右侧主体结束 -->
 </div>
 <!-- 中部结束 -->
+<div class="bg-changer">
+    <div class="swiper-container changer-list">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/a.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/b.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/c.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/d.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/e.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/f.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/g.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/h.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/i.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/j.jpg" alt=""></div>
+            <div class="swiper-slide"><img class="item" src="../X-admin/images/k.jpg" alt=""></div>
+            <div class="swiper-slide"><span class="reset">初始化</span></div>
+        </div>
+    </div>
+    <div class="bg-out"></div>
+    <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
+</div>
 <script>
     function insertExpress(){
         $.post("/express/insert", {
