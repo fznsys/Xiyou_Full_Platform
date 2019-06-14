@@ -27,7 +27,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="/loginout.html">退出登录</a></dd>
+                <dd><a href="../loginout.html">退出登录</a></dd>
             </dl>
         </li>
     </ul>
@@ -39,7 +39,6 @@
     <div class="left-nav">
         <div id="side-nav">
             <ul id="nav">
-
                 <li class="list">
                     <a href="javascript:;">
                         <i class="iconfont">&#xe70b;</i>
@@ -54,7 +53,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="./payforelectricity.html">
+                            <a href="./PayForElectricity.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 电费
                             </a>
@@ -79,6 +78,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
@@ -87,7 +87,7 @@
                     </a>
                     <ul class="sub-menu" style="display:none">
                         <li>
-                            <a href="./paymentrecording.html">
+                            <a href="./PaymentRecording.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 缴费记录
                             </a>
@@ -187,7 +187,7 @@
             data: (pay),
             dataType: "text",
             success: function (data) {
-                window.location.href="./paymentresult.html"
+                window.location.href="./PaymentResult.html"
             },
             error: function () {
                 alert("error");
@@ -202,7 +202,7 @@
             success: function (data) {
                 if(data!="")
                 {
-                    // $("#name").html(data);
+                    $("#name").html(data);
                 }
                 else
                 {
