@@ -30,8 +30,8 @@ CREATE TABLE `tb_express_order` (
   `company` varchar(20) NOT NULL,
   `address` varchar(50) NOT NULL,
   `expressnum` varchar(20) NOT NULL,
-  `courierid` varchar(50) NOT NULL,
-  `couriername` varchar(20) NOT NULL,
+  `courierid` varchar(50) DEFAULT NULL,
+  `couriername` varchar(20) DEFAULT NULL,
   `price` varchar(10) NOT NULL,
   `status` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
@@ -87,9 +87,9 @@ DROP TABLE IF EXISTS `tb_takeout_food`;
 CREATE TABLE `tb_takeout_food` (
   `id` varchar(50) NOT NULL,
   `name` varchar(10) NOT NULL,
-  `off` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `offprice` int(11) NOT NULL,
+  `off` varchar(5) NOT NULL,
+  `price` varchar(10) NOT NULL,
+  `offprice` varchar(10) NOT NULL,
   `status` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -223,7 +223,7 @@ CREATE TABLE `tb_user_user` (
 
 LOCK TABLES `tb_user_user` WRITE;
 /*!40000 ALTER TABLE `tb_user_user` DISABLE KEYS */;
-INSERT INTO `tb_user_user` VALUES ('11','啊啊啊','111','dc483e80a7a0bd9ef71d8cf973673924','1'),('123','aaa','test','dc483e80a7a0bd9ef71d8cf973673924','2');
+INSERT INTO `tb_user_user` VALUES ('11','啊啊啊','111','dc483e80a7a0bd9ef71d8cf973673924','1'),('123','aaa','test','dc483e80a7a0bd9ef71d8cf973673924','2'),('456','admin','test1','dc483e80a7a0bd9ef71d8cf973673924','0');
 /*!40000 ALTER TABLE `tb_user_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -275,4 +275,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-13 21:59:59
+-- Dump completed on 2019-06-14 10:03:51
